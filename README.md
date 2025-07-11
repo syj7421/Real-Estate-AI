@@ -1,7 +1,7 @@
 ![Map showing amenities within 10-minute walk](./assets/map_within10minwalk.png)
-# Amenity Scope 
+# Real Estate AI
 
-**Amenity Scope** is a real estate presentation tool designed to help property agents better communicate location value to clients. It visualizes nearby amenities on an interactive map and provides Python-powered statistical insights on key property metrics.
+**Real Estate AI** is a real estate presentation tool designed to help property agents better communicate location value to clients. It visualizes nearby amenities on an interactive map and provides Python-powered statistical insights on key property metrics.
 
 ## 🚧 Status
 
@@ -23,4 +23,4 @@ This project is currently under active development. Core functionality such as a
 
 ## 💡 Motivation
 
-Many agents struggle to present location value in a clear, persuasive way. Amenity Scope aims to bridge this gap by combining maps, stats, and automation to improve real estate presentations.
+Many agents struggle to present location value in a clear, persuasive way. Real Estate AI aims to bridge this gap by combining maps, stats, and automation to improve real estate presentations.
