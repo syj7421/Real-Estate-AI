@@ -1,6 +1,7 @@
 // src/components/MapView.jsx
 import React from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
+import SuburbChoropleth from './SuburbChoropleth';
 import 'leaflet/dist/leaflet.css';
 
 export default function MapView() {
@@ -16,6 +17,7 @@ export default function MapView() {
         attribution="© OpenStreetMap contributors"
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
+      <SuburbChoropleth />
    </MapContainer>
    );
  }
