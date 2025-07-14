@@ -9,7 +9,7 @@ export default function SuburbChoropleth() {
     fillColor: getChoroplethColor(feat.properties.change),
     weight: 1,
     color: '#333',
-    fillOpacity: 0.7,
+    fillOpacity: 0.6,
   });
 
   const onEachFeature = (feat, layer) => {

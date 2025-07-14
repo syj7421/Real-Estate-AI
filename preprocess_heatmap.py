@@ -1,18 +1,18 @@
 import json, csv
 
 # ◆ Paths (adjust if needed)
-CSV_IN    = 'src/data/price_change_2018_2024.csv'
+CSV_IN    = 'src/data/filtered_growth.csv'
 GEO_IN    = 'src/data/melbourneSuburbs.json'
 GEO_OUT   = 'src/data/melbourneSuburbsWithChange.geojson'
 
-# 1) Load price changes
+# 1) Load price growth
 change_by_suburb = {}
 with open(CSV_IN, newline='', encoding='utf-8') as f:
     reader = csv.DictReader(f)
     for row in reader:
-        suburb = row['suburb'].strip()
+        suburb = row['Suburb'].strip()
         try:
-            change = float(row['pct_change_2018_2024'])
+            change = float(row['Growth(PA)'])
         except:
             continue
         change_by_suburb[suburb] = change
