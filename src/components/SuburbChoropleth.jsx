@@ -15,7 +15,7 @@ export default function SuburbChoropleth() {
   const onEachFeature = (feat, layer) => {
     const name   = feat.properties.vic_loca_2 || feat.properties.name;
     const change = feat.properties.change;
-    layer.bindPopup(`${name}<br/>Δ 2018–24: ${change != null ? change.toFixed(1) : 'N/A'}%`);
+    layer.bindPopup(`${name}<br/>Δ 2013–24: ${change != null ? change.toFixed(1) : 'N/A'}%`);
   };
 
   return (

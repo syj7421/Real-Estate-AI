@@ -1,18 +1,16 @@
-export function getChoroplethColor(change) {
-    if (change == null) return '#dcdcdc';  // 회색 tone for missing
+export function getChoroplethColor(change, isEast = false) {
+    if (change == null) return '#ececec';        // 데이터 없음
   
-    // 강한 상승 (매우 긍정)
-    if (change >= 8) return '#00441b';     // 아주 진한 초록
-    if (change >= 6) return '#006d2c';
-    if (change >= 4) return '#238b45';
-    if (change >= 2) return '#41ae76';
-    if (change > 0)  return '#66c2a4';
+    /* ---------- 상승 구간 ---------- */
+    if (change >= 8)             return  '#004000';
+    if (change >= 6.5)             return '#002a0e';
+    if (change >= 6)             return  '#006400';
+    if (change >= 4)             return  '#6cc29a';
+    if (change >= 2)             return '#8ad6c0';
+    if (change >  0)             return  '#bfe8df';
   
-    // 약한 하락 (약한 경고)
-    if (change > -1) return '#fdd0a2';
-    if (change > -3) return '#f16913';
-    
-    // 강한 하락 (경고)
-    return '#a63603';
+    /* ---------- 하락 구간 ---------- */
+    if (change > -1)             return '#fdd49e';               // 약하락
+    if (change > -3)             return '#fb6a4a';               // 중하락
+    return '#a63603';                                           // 강하락
   }
-  
