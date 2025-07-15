@@ -42,3 +42,5 @@ package-lock.json
 
 # Ignore large data files (customize as needed)
 src/data/melbourneSuburbsWithChange.json
+
+src/data/house analysis/

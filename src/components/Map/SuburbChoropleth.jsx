@@ -1,6 +1,6 @@
 import React from 'react';
 import { GeoJSON } from 'react-leaflet';
-import geoData from '../../data/melbourneSuburbsWithChange.json';
+import geoData from '../../data/house analysis/melbourneSuburbsWithChange.json'
 import { getChoroplethColor } from '../../utils/colorScale';
 
 export default function SuburbChoropleth() {
