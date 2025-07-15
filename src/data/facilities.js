@@ -6,15 +6,7 @@ export const facilities = [
   { name: "Melbourne High School",                  lat: -37.829600, lng: 144.982700, category: "education" },
   { name: "University High School",                 lat: -37.792300, lng: 144.954900, category: "education" },
 
-  /* ---------- medical ---------- */
-  { name: "Royal Melbourne Hospital",               lat: -37.798800, lng: 144.956100, category: "medical" },     // :contentReference[oaicite:2]{index=2}
-  { name: "St Vincent's Hospital Melbourne",        lat: -37.806100, lng: 144.978200, category: "medical" },
 
-  /* ---------- park ---------- */
-  { name: "Flagstaff Gardens",                      lat: -37.812400, lng: 144.955800, category: "park" },
-  { name: "Treasury Gardens",                       lat: -37.81400976356878, lng: 144.97585145850567, category: "park"},
-  { name: "Birrarung Marr Park",                    lat: -37.818429988829955, lng: 144.97419802693375, category: "park" },
-  { name: "Alexandra Gardens",                      lat: -37.819000, lng: 144.968600, category: "park" },
 
   /* ---------- shopping ---------- */
   { name: "Queen Victoria Market",                  lat: -37.807594, lng: 144.956650, category: "shopping" },     // :contentReference[oaicite:3]{index=3}
@@ -36,6 +28,10 @@ export const facilities = [
   { name: "National Gallery of Victoria (NGV)",     lat: -37.822628, lng: 144.968826, category: "culture" },      // :contentReference[oaicite:5]{index=5}
   { name: "Melbourne Museum",                       lat: -37.803300, lng: 144.971800, category: "culture" },
   { name: "Arts Centre Melbourne",                  lat: -37.820300, lng: 144.968000, category: "culture" },
+
+  /* ---------- medical ---------- */
+  { name: "Royal Melbourne Hospital",               lat: -37.798277051141575,  lng: 144.956036706517, category: "medical" },     // :contentReference[oaicite:2]{index=2}
+  { name: "St. Vincent's Hospital Melbourne",       lat: -37.80690848990629, lng: 144.97495339023095, category: "medical" },
 
   /* ---------- park ---------- */
   { name: "Flagstaff Gardens",                      lat: -37.81016779231764, lng: 144.9545842729658, category: "park"},
