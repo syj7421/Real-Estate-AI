@@ -44,3 +44,5 @@ package-lock.json
 src/data/melbourneSuburbsWithChange.json
 
 src/data/house analysis/
+
+public/every_PA_region/

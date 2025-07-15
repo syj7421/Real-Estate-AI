@@ -1,4 +1,4 @@
-export function getChoroplethColor(change, isEast = false) {
+export function getChoroplethColor(change) {
     if (change == null) return '#ececec';        // 데이터 없음
   
     /* ---------- 상승 구간 ---------- */

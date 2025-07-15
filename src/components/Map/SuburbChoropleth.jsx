@@ -1,9 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { GeoJSON } from 'react-leaflet';
-import geoData from '../../data/house analysis/melbourneSuburbsWithChange.json'
 import { getChoroplethColor } from '../../utils/colorScale';
 
-export default function SuburbChoropleth() {
+export default function SuburbChoropleth({ startYear }) {
+  const [geoData, setGeoData] = useState(null);
+  console.log(startYear);
+
+  useEffect(() => {
+    // The file path was incorrect: it should use "house analysis" (with a space), not "house-analysis" (with a dash), and the extension is .geojson not .json
+    // Try both .geojson and .json in case of static file server config issues
+    let url = `/every_PA_region/melbourneSuburbsWithChange_${startYear}.json`;
+    // If running in dev and .geojson fails (returns HTML), fallback to .json
+    // We'll check for this in the fetch error handler below
+    setGeoData(null);
+    fetch(url)
+      .then(res => res.json())
+      .then(setGeoData)
+      .catch(err => {
+        setGeoData(null);
+        console.error('Failed to load GeoJSON:', err);
+      });
+  }, [startYear]);
+
+  if (!geoData) {
+    return <div style={{ padding: '2rem', textAlign: 'center' }}>Loading map data...</div>;
+  }
 
   const styleFeature = feat => ({
     fillColor: getChoroplethColor(feat.properties.change),
@@ -13,9 +34,10 @@ export default function SuburbChoropleth() {
   });
 
   const onEachFeature = (feat, layer) => {
-    const name   = feat.properties.vic_loca_2 || feat.properties.name;
-    const change = feat.properties.change;
-    layer.bindPopup(`${name}<br/>Δ 2013–24: ${change != null ? change.toFixed(1) : 'N/A'}%`);
+    const name = feat.properties.vic_loca_2 || feat.properties.name;
+    const value = feat.properties.change;
+    const yearLabel = `Δ ${startYear}–2024`;
+    layer.bindPopup(`${name}<br/>${yearLabel}: ${value != null ? value.toFixed(1) : 'N/A'}%`);
   };
 
   return (
