@@ -12,7 +12,8 @@ export const facilities = [
 
   /* ---------- park ---------- */
   { name: "Flagstaff Gardens",                      lat: -37.812400, lng: 144.955800, category: "park" },
-  { name: "Birrarung Marr",                         lat: -37.817400, lng: 144.974700, category: "park" },
+  { name: "Treasury Gardens",                       lat: -37.81400976356878, lng: 144.97585145850567, category: "park"},
+  { name: "Birrarung Marr Park",                    lat: -37.818429988829955, lng: 144.97419802693375, category: "park" },
   { name: "Alexandra Gardens",                      lat: -37.819000, lng: 144.968600, category: "park" },
 
   /* ---------- shopping ---------- */
@@ -36,11 +37,23 @@ export const facilities = [
   { name: "Melbourne Museum",                       lat: -37.803300, lng: 144.971800, category: "culture" },
   { name: "Arts Centre Melbourne",                  lat: -37.820300, lng: 144.968000, category: "culture" },
 
+  /* ---------- park ---------- */
+  { name: "Flagstaff Gardens",                      lat: -37.81016779231764, lng: 144.9545842729658, category: "park"},
+  { name: "Treasury Gardens",                       lat: -37.81400976356878, lng: 144.97585145850567, category: "park"},
+  { name: "Birrarung Marr Park",                    lat: -37.818429988829955, lng: 144.97419802693375, category: "park" },
+  { name: "Alexandra Gardens",                      lat: -37.820041944464805, lng:144.97215535762183, category: "park" },
+  { name: "Parliament Gardens",                     lat: -37.80918164519652, lng: 144.97339725391774, category: "park" },
+  { name: "Kings Domain",                           lat: -37.823827449993786, lng: 144.9734621704152, category: "park" },
+  { name: "Batman Park",                            lat: -37.821454251441786, lng: 144.9564530955072, category: "park" },
+  { name: "Queen Victoria Gardens",                 lat: -37.82175190292371, lng: 144.97077861252845, category: "park" },
+  { name: "Carlton Gardens",                        lat: -37.805210802349734, lng: 144.97131583951864, category: "park" },
+
   /* ---------- station ---------- */
   { name: "Flinders Street Station",                lat: -37.818100, lng: 144.966800, category: "station" },      // :contentReference[oaicite:6]{index=6}
   { name: "Southern Cross Station",                 lat: -37.818300, lng: 144.952500, category: "station" },
   { name: "Parliament Station",                     lat: -37.811400, lng: 144.973000, category: "station" },
-  { name: "Bourke St / William St Tram Stop (Stop 3)", lat: -37.815000, lng: 144.958400, category: "station" },
+  { name: "Melbourne Central Station",              lat: -37.81025148058484, lng: 144.9642888964346, category: "station" },
+  { name: "Flagstaff Station",                      lat: -37.81185141464188, lng: 144.95619788883204, category: "station" },
 
   /* ---------- other ---------- */
   { name: "Crown Casino & Entertainment Complex",   lat: -37.823521, lng: 144.957962, category: "other" },        // :contentReference[oaicite:7]{index=7}
