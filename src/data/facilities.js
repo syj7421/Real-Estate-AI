@@ -1,27 +1,45 @@
 export const facilities = [
 
 
-  /* ---------- shopping ---------- */
-  { name: "Queen Victoria Market",                  lat: -37.807594, lng: 144.956650, category: "shopping" },     // :contentReference[oaicite:3]{index=3}
-  { name: "Coles Central (Elizabeth St)",           lat: -37.811110, lng: 144.962550, category: "shopping" },     // 매장 페이지 좌표
-  { name: "Woolworths Melbourne Square",            lat: -37.824600, lng: 144.959300, category: "shopping" },
-  { name: "DFO South Wharf",                        lat: -37.824000, lng: 144.947600, category: "shopping" },
-  { name: "Woolworths Queen St (374 Queen St)", lat: -37.8099, lng: 144.9628, category: "shopping" },  // CBD Woolworths :contentReference[oaicite:2]{index=2}
-  { name: "ALDI Melbourne CBD (501 Swanston St)", lat: -37.8075, lng: 144.9631, category: "shopping" },  // CBD Aldi :contentReference[oaicite:3]{index=3}
-  { name: "Coles Docklands (201 Spencer St)", lat: -37.8170, lng: 144.9480, category: "shopping" },  // Docklands Coles :contentReference[oaicite:4]{index=4}
-  { name: "Woolworths The District Docklands", lat: -37.8200, lng: 144.9480, category: "shopping" },  // Docklands Woolworths :contentReference[oaicite:5]{index=5}
-  { name: "Woolworths Southbank Metro (245 City Rd)", lat: -37.8250, lng: 144.9660, category: "shopping" },  // Southbank Wʼs :contentReference[oaicite:6]{index=6}
-  { name: "Coles Melbourne Central (211 La Trobe St)", lat: -37.8105, lng: 144.9643, category: "shopping" },  // CBD Coles via Melbourne Central :contentReference[oaicite:7]{index=7}
-  { name: "Melbourne Central Shopping Centre", lat: -37.8107, lng: 144.9629, category: "shopping" },  // Shopping Centre :contentReference[oaicite:9]{index=9}
-  { name: "Queen Victoria Village (QV)", lat: -37.8078, lng: 144.9641, category: "shopping" },  // QV centre :contentReference[oaicite:10]{index=10}
-  { name: "The District Docklands (shopping centre)", lat: -37.8202, lng: 144.9478, category: "shopping" },  // Docklands centre :contentReference[oaicite:11]{index=11}
-  
+
   /* ---------- culture ---------- */
   { name: "State Library of Victoria",              lat: -37.809811, lng: 144.965195, category: "culture" },      // :contentReference[oaicite:4]{index=4}
   { name: "National Gallery of Victoria (NGV)",     lat: -37.822628, lng: 144.968826, category: "culture" },      // :contentReference[oaicite:5]{index=5}
   { name: "Melbourne Museum",                       lat: -37.803300, lng: 144.971800, category: "culture" },
   { name: "Arts Centre Melbourne",                  lat: -37.820300, lng: 144.968000, category: "culture" },
 
+
+  /* ---------- shopping ---------- */
+  /* ---------- shopping mall ---------- */
+
+  { name: "Emporium Melbourne",              lat: -37.81197515763599,lng: 144.96377016348444,  category: "shopping" },   
+  { name: "QV Melbourne",              lat: -37.810168989791926, lng: 144.96560603725456,  category: "shopping" },     
+  { name: "Melbourne Central Shopping Mall", lat: -37.8097037575854, lng: 144.96280026790777,  category: "shopping" },     
+  { name: "Bourke Street Mall",              lat: -37.813126180200804, lng:144.96430282470425,  category: "shopping" },     
+  { name: "Midtown Melbourne",              lat: -37.81281539529738,lng: 144.96577331033993, category: "shopping" },     
+  { name: "Melbourne's GPO",              lat: -37.81320996264651, lng:144.96331605414613,  category: "shopping" },     
+  { name: "Royal Arcade",              lat: -37.8143305224199,lng: 144.963975318003, category: "shopping" },     
+  { name: "Galleria Melbourne",              lat: -37.814583040584,lng:  144.9628765449082,  category: "shopping" },     
+  { name: "The Strand Melbourne",              lat: -37.81248395709454, lng:144.96259685721137, category: "shopping" },     
+  { name: "The Block Arcade",              lat:-37.815545758160994, lng: 144.96461460416722,  category: "shopping" },     
+  { name: "Collins Place",              lat:-37.81399275464047, lng: 144.97332825009224, category: "shopping" },     
+  { name: "Collins234",              lat: -37.81513047251365,lng:  144.96593411252843, category: "shopping" },     
+  { name: "Centreway Arcade",              lat: -37.815791574669895, lng: 144.96524746709028, category: "shopping" },     
+  { name: "Mid City Centre",              lat: -37.812401244536076,lng: 144.9673503187446, category: "shopping" },     
+  { name: "Southern Cross Lane",              lat: -37.81236937578059, lng: 144.97036812143983,  category: "shopping" },     
+  { name: "Southgate",              lat:-37.820105059730366,  lng: 144.96609971080454, category: "shopping" },     
+  { name: "Spencer Outlet Centre",              lat: -37.81603292553182 ,lng: 144.95259765945082,  category: "shopping" },  
+  { name: "DFO South Wharf",              lat: -37.824278314527895, lng:144.94972705116896 , category: "shopping" },     
+  { name: "Victoria Gardens Shopping Centre",  lat:-37.81284339912243,  lng:145.01179773053815, category: "shopping" },     
+
+  /* ---------- market ---------- */
+  { name: "Queen Victoria Market",  lat:-37.80622353579755, lng: 144.95601471772386, category: "shopping" },     
+  { name: "South Melbourne Market",  lat:-37.83079086728595, lng:  144.95641116487218, category: "shopping" },     
+
+  /* ---------- Woolworths, Coles, Aldi ---------- */
+
+
+    
   /* ---------- education ---------- */
   /* ---------- university ---------- */
   { name: "RMIT University", lat: -37.80815161711269, lng: 144.9641121562454, category: "education"},
@@ -192,21 +210,6 @@ export const facilities = [
 { name: "Montmorency Secondary College", lat: -37.7124, lng: 145.1197, category: "education" },
 { name: "Mount Waverley Secondary College", lat: -37.8734, lng: 145.1321, category: "education" },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
 
   /* ---------- medical ---------- */
   { name: "Royal Melbourne Hospital",               lat: -37.798277051141575,  lng: 144.956036706517, category: "medical" },     // :contentReference[oaicite:2]{index=2}
