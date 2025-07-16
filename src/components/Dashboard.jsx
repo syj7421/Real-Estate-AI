@@ -7,7 +7,7 @@ import "leaflet/dist/leaflet.css";
 export default function Dashboard() {
   const [selectedMode, setSelectedMode] = useState("amenities"); // "amenities" or "growth"
   const [startYear, setStartYear] = useState(2013); // For growth mode
-
+  const [showSchools, setShowSchools] = useState(false); // For checkbox
 
   return (
     <div>
@@ -57,25 +57,35 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Growth mode: year selector */}
+      {/* Growth mode: year selector and school checkbox */}
       {selectedMode === "growth" && (
-        <div style={{ padding: "1rem", background: "#f8f8f8", display: "flex", alignItems: "center", gap: "1rem" }}>
-          <label htmlFor="start-year-select" style={{ fontWeight: 500 }}>
-            Start Year:
+        <div style={{ padding: "1rem", background: "#f8f8f8", display: "flex", alignItems: "center", gap: "2rem" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+            <label htmlFor="start-year-select" style={{ fontWeight: 500 }}>
+              Start Year:
+            </label>
+            <select
+              id="start-year-select"
+              value={startYear}
+              onChange={e => setStartYear(Number(e.target.value))}
+              style={{ fontSize: "1rem", padding: "0.25rem 0.5rem" }}
+            >
+              {Array.from({ length: 2023 - 2013 + 1 }, (_, i) => 2013 + i).map(year => (
+                <option key={year} value={year}>{year}</option>
+              ))}
+            </select>
+            <span style={{ color: '#666', fontSize: '0.95em' }}>
+              (Growth to 2024)
+            </span>
+          </div>
+          <label style={{ display: "flex", alignItems: "center", gap: "0.5em", cursor: "pointer" }}>
+            <input
+              type="checkbox"
+              checked={showSchools}
+              onChange={e => setShowSchools(e.target.checked)}
+            />
+            Show the location of top 50 high schools in Victoria
           </label>
-          <select
-            id="start-year-select"
-            value={startYear}
-            onChange={e => setStartYear(Number(e.target.value))}
-            style={{ fontSize: "1rem", padding: "0.25rem 0.5rem" }}
-          >
-            {Array.from({ length: 2023 - 2013 + 1 }, (_, i) => 2013 + i).map(year => (
-              <option key={year} value={year}>{year}</option>
-            ))}
-          </select>
-          <span style={{ color: '#666', fontSize: '0.95em' }}>
-            (Growth to 2024)
-          </span>
         </div>
       )}
 
@@ -93,7 +103,7 @@ export default function Dashboard() {
               attribution="© OpenStreetMap contributors"
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <SuburbChoropleth startYear={startYear} />
+            <SuburbChoropleth startYear={startYear} showSchools={showSchools} />
           </MapContainer>
         </div>
       )}

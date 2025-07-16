@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { GeoJSON } from 'react-leaflet';
+import { GeoJSON, CircleMarker, Tooltip } from 'react-leaflet';
 import { getChoroplethColor } from '../../utils/colorScale';
+import { top50VicSchools } from '../../data/top50VicSchools';
 
-export default function SuburbChoropleth({ startYear }) {
+export default function SuburbChoropleth({ startYear, showSchools }) {
   const [geoData, setGeoData] = useState(null);
-  console.log(startYear);
+  const paColumn = `PA_${startYear}_to_end`;
 
   useEffect(() => {
     // The file path was incorrect: it should use "house analysis" (with a space), not "house-analysis" (with a dash), and the extension is .geojson not .json
@@ -41,10 +42,22 @@ export default function SuburbChoropleth({ startYear }) {
   };
 
   return (
-    <GeoJSON
-      data={geoData}
-      style={styleFeature}
-      onEachFeature={onEachFeature}
-    />
+    <>
+      <GeoJSON
+        data={geoData}
+        style={styleFeature}
+        onEachFeature={onEachFeature}
+      />
+      {showSchools && top50VicSchools.map(school => (
+        <CircleMarker
+          key={school.name}
+          center={[school.lat, school.lng]}
+          radius={6}
+          pathOptions={{ color: '#6f42c1', fillColor: '#6f42c1', fillOpacity: 0.95 }}
+        >
+          <Tooltip direction="top" offset={[0, -8]}>{school.name}</Tooltip>
+        </CircleMarker>
+      ))}
+    </>
   );
 }
