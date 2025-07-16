@@ -3,10 +3,28 @@ export const facilities = [
 
 
   /* ---------- culture ---------- */
-  { name: "State Library of Victoria",              lat: -37.809811, lng: 144.965195, category: "culture" },      // :contentReference[oaicite:4]{index=4}
-  { name: "National Gallery of Victoria (NGV)",     lat: -37.822628, lng: 144.968826, category: "culture" },      // :contentReference[oaicite:5]{index=5}
-  { name: "Melbourne Museum",                       lat: -37.803300, lng: 144.971800, category: "culture" },
-  { name: "Arts Centre Melbourne",                  lat: -37.820300, lng: 144.968000, category: "culture" },
+  { name: "State Library of Victoria",              lat: -37.809811, lng: 144.965195, category: "culture" },      // :contentReference[oaicite:4]{index=4}  
+  { name: "Arts Centre Melbourne",                  lat: -37.82088712030129, lng: 144.968694813574, category: "culture" },
+  { name: "The Ian Potter Centre",                  lat: -37.816446062774276,  lng:144.9697676970711, category: "culture" },
+  { name: "National Gallery of Victoria (NGV)",     lat: -37.82205180762928,  lng: 144.96894925573662, category: "culture" },      // :contentReference[oaicite:5]{index=5}
+  { name: "ACMI",     lat: -37.8171344011688,   lng: 144.96847717951334, category: "culture" },      // :contentReference[oaicite:5]{index=5}
+  { name: "ArtVo",     lat: -37.81242775230953,  lng:  144.93741336369737, category: "culture" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Australian Centre for Contemporary Art",     lat: -37.82618243765195,   lng:144.96667557340257, category: "culture" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Outré Gallery",     lat: -37.81204572198343,    lng:144.96204071669513, category: "culture" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Metartworld-World's Largest Indoor Scrap Metal Art Gallery",     lat:-37.8263661419272,   lng:144.94127026311585, category: "culture" },      // :contentReference[oaicite:5]{index=5}
+  { name: "AC/DC Lane Graffiti",     lat: -37.81494305009632,    lng:144.97074267903724, category: "culture" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Fed Square",     lat: -37.8169771968245,  lng: 144.9692835574812,  category: "culture" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Centre for Contemporary Photography",     lat: -37.808365592085345,   lng: 144.963919139995685,  category: "culture" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Immigration Museum",     lat:-37.81863398060745,   lng: 144.96047615573664,   category: "culture" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Melbourne Museum",     lat: -37.802756357982624,    lng: 144.97177496408412, category: "culture" },      // :contentReference[oaicite:5]{index=5}
+  { name: "City of Melbourne Collection",     lat: -37.8146674315949,   lng:  144.96665596467994, category: "culture" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Hellenic Museum",     lat: -37.81168390386875,    lng: 144.95674252116672,  category: "culture" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Royal Exhibition Building",     lat: -37.80428220742791,    lng:  144.97167165573663,  category: "culture" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Old Treasury Building",     lat: -37.81275867285939,     lng:144.97441823748923 , category: "culture" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Old Melbourne Gaol",     lat: -37.80726603423058,     lng:144.9653631007737, category: "culture" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Children's Gallery (Melbourne Museum)",     lat: -37.802451163111996,     lng:144.97029836486035,  category: "culture" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Victoria Police Museum",     lat: -37.813333040167386,    lng:144.95151405573668,  category: "culture" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Australian Sports Museum",     lat: -37.81823177291917,   lng: 144.98425962505686,   category: "culture" },      // :contentReference[oaicite:5]{index=5}
 
 
   /* ---------- shopping ---------- */
@@ -61,9 +79,6 @@ export const facilities = [
   { name: "ALDI CBD",  lat:-37.80665559450397,   lng: 144.962278609717, category: "shopping" },   
   { name: "ALDI West Melbourne",  lat:-37.80726036818509,   lng:  144.94890814777597, category: "shopping" },  
   { name: "ALDI South Melbourne",  lat:-37.829344065182404,  lng:  144.956931809717,  category: "shopping" },  
-
-     
-  
 
     
   /* ---------- education ---------- */
