@@ -37,7 +37,33 @@ export const facilities = [
   { name: "South Melbourne Market",  lat:-37.83079086728595, lng:  144.95641116487218, category: "shopping" },     
 
   /* ---------- Woolworths, Coles, Aldi ---------- */
+  { name: "Woolworths Qv",  lat:-37.80967883544892,  lng: 144.96573737049317, category: "shopping" },     
+  { name: "Woolworths Metro Elizabeth Street",  lat:-37.81632398113592,   lng: 144.96449282587602, category: "shopping" },     
+  { name: "Woolworths Metro Queens Place",  lat:-37.80950930867859,  lng: 144.95865633965178, category: "shopping" },     
+  { name: "Woolworths Metro Literature Lane",  lat:-37.80883119741018,  lng: 144.96148875208414,category: "shopping" },     
+  { name: "Woolworths Metro 222 Exhibition St",  lat:-37.81005179320961,  lng:  144.97011473540084, category: "shopping" },     
+  { name: "Woolworths Metro Bourke Street",  lat:-37.81547641931112,   lng:144.95608141925874, category: "shopping" },     
+  { name: "Woolworths Metro Queens Place",  lat:-37.809407592385334,   lng: 144.95865633965178, category: "shopping" },     
+  { name: "Woolworths Metro Southern Cross",  lat:-37.8184258924705, lng:  144.95333483750616, category: "shopping" },     
+  { name: "Woolworths Melbourne Square (Southbank)",  lat:-37.825185532288245,  lng: 144.96357417152805 , category: "shopping" },     
+  { name: "Woolworths Victoria Harbour",  lat:-37.81909917157121, lng: 144.94277816503558, category: "shopping" },     
+  { name: "Woolworths The District",  lat:-37.811233719674206,   lng: 144.93985992192344, category: "shopping" },     
+  { name: "Woolworths Metro City North",  lat:-37.80167199884506,   lng: 144.95779853504865, category: "shopping" },     
+  { name: "Woolworths South Melbourne",  lat:-37.83008227944615,    lng: 144.9572835509701, category: "shopping" },     
+  { name: "Woolworths Metro Southbank",  lat:-37.82526889628385,   lng: 144.95900016456542, category: "shopping" },     
+  { name: "Woolworths Metro Collins Square",  lat:-37.81916697343303,  lng: 144.94990211251,  category: "shopping" },     
 
+  { name: "Coles Central Melbourne CBD",  lat:-37.816793546831626,  lng: 144.9643215512951, category: "shopping" },     
+  { name: "Coles Central Melbourne Central",  lat:-37.808995660600424, lng:144.9632057524581, category: "shopping" },     
+  { name: "Coles Spencer St",  lat:-37.813810105026995,   lng:144.95213359476801, category: "shopping" },     
+  { name: "Coles Local South Melbourne",  lat:-37.83119377394936,  lng:144.9604862501138,  category: "shopping" },     
+  { name: "Coles Local South Melbourne - Normanby Road",  lat:-37.82970235914832,  lng:  144.94649584931162, category: "shopping" },     
+  { name: "ALDI CBD",  lat:-37.80665559450397,   lng: 144.962278609717, category: "shopping" },   
+  { name: "ALDI West Melbourne",  lat:-37.80726036818509,   lng:  144.94890814777597, category: "shopping" },  
+  { name: "ALDI South Melbourne",  lat:-37.829344065182404,  lng:  144.956931809717,  category: "shopping" },  
+
+     
+  
 
     
   /* ---------- education ---------- */
