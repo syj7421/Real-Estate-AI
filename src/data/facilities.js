@@ -83,7 +83,6 @@ export const facilities = [
   { name: "Woolworths Metro Literature Lane",  lat:-37.80883119741018,  lng: 144.96148875208414,category: "shopping" },     
   { name: "Woolworths Metro 222 Exhibition St",  lat:-37.81005179320961,  lng:  144.97011473540084, category: "shopping" },     
   { name: "Woolworths Metro Bourke Street",  lat:-37.81547641931112,   lng:144.95608141925874, category: "shopping" },     
-  { name: "Woolworths Metro Queens Place",  lat:-37.809407592385334,   lng: 144.95865633965178, category: "shopping" },     
   { name: "Woolworths Metro Southern Cross",  lat:-37.8184258924705, lng:  144.95333483750616, category: "shopping" },     
   { name: "Woolworths Melbourne Square (Southbank)",  lat:-37.825185532288245,  lng: 144.96357417152805 , category: "shopping" },     
   { name: "Woolworths Victoria Harbour",  lat:-37.81909917157121, lng: 144.94277816503558, category: "shopping" },     

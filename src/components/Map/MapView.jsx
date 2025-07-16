@@ -33,8 +33,8 @@ const categories = [
   "medical",
   "park",
   "shopping",
-  "culture",
-  "station",
+  "culture & entertainment",
+  "station"
 ];
 
 export default function MapView() {
@@ -48,7 +48,7 @@ export default function MapView() {
     ? facilities.filter(
         (fac) =>
           getDistanceMeters(selectedProperty.lat, selectedProperty.lng, fac.lat, fac.lng) <= 800 &&
-          fac.category === selectedCategory.toLowerCase() 
+          fac.category.toLowerCase() === selectedCategory.toLowerCase() 
       )
     : [];
 
