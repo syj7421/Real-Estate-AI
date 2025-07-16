@@ -132,7 +132,7 @@ export default function MapView() {
         {showTramZone && (
           <GeoJSON
             data={freeTramZone}
-            style={{ color: "green", fillColor: "green", fillOpacity: 0.6, weight: 2 }}
+            style={{ color: "#5C8B2F", fillColor: "#92C359", fillOpacity: 0.6, weight: 4 }}
           />
         )}
       </MapContainer>
