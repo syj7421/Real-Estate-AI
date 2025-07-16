@@ -1,6 +1,6 @@
 // src/components/MapView.jsx
 import React, { useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
 import { facilities } from "../../data/facilities";
 import { getDistanceMeters } from "../../utils/distance";
 import L from "leaflet";
@@ -8,6 +8,7 @@ import "leaflet/dist/leaflet.css";
 import CustomerFacilMarker from "./CustomerFacilMarker";
 import ReactDOMServer from "react-dom/server";
 import { properties } from "../../data/properties";
+import { freeTramZone } from "../../data/freeTramZone";
 
 // 1️⃣ Leaflet 기본 아이콘을 로컬 번들로 지정
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
@@ -28,45 +29,59 @@ const redIcon = new L.Icon({
 });
 
 const categories = [
-  "Education",
-  "Medical",
-  "Park",
-  "Shopping",
-  "Culture & Entertainment",
-  "Station",
-  "Other"
+  "education",
+  "medical",
+  "park",
+  "shopping",
+  "culture",
+  "station",
 ];
 
 export default function MapView() {
   // State for selected property and category
   const [selectedProperty, setSelectedProperty] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState("Education");
+  const [selectedCategory, setSelectedCategory] = useState("education");
+  const [showTramZone, setShowTramZone] = useState(false);
 
   // Facilities within 800m of selected property and matching category
   const filteredFacilities = selectedProperty
     ? facilities.filter(
         (fac) =>
           getDistanceMeters(selectedProperty.lat, selectedProperty.lng, fac.lat, fac.lng) <= 800 &&
-          fac.category === selectedCategory.toLowerCase()
+          fac.category === selectedCategory.toLowerCase() 
       )
     : [];
 
   return (
     <div>
       {/* Header with radio buttons */}
-      <div style={{ padding: "1rem", background: "#f8f8f8", display: "flex", gap: "1.5rem" }}>
-        {categories.map((cat) => (
-          <label key={cat} style={{ textTransform: "capitalize", cursor: "pointer" }}>
-            <input
-              type="radio"
-              name="facility-category"
-              value={cat}
-              checked={selectedCategory === cat}
-              onChange={() => setSelectedCategory(cat)}
-              style={{ marginRight: "0.5em" }}
-            />
-            {cat}
-          </label>
+      <div style={{ padding: "1rem", background: "#f8f8f8", display: "flex", gap: "1.5rem", alignItems: "center" }}>
+        {categories.map((cat, idx) => (
+          <span key={cat} style={{ display: "flex", alignItems: "center", gap: "0.5em" }}>
+            <label style={{ textTransform: "capitalize", cursor: "pointer" }}>
+              <input
+                type="radio"
+                name="facility-category"
+                value={cat}
+                checked={selectedCategory === cat}
+                onChange={() => setSelectedCategory(cat)}
+                style={{ marginRight: "0.5em" }}
+              />
+              {cat}
+            </label>
+            {/* Insert the tram zone checkbox right after the 'station' radio button */}
+            {cat === "station" && (
+              <label style={{ marginLeft: 8, cursor: "pointer", fontWeight: 500 }}>
+                <input
+                  type="checkbox"
+                  checked={showTramZone}
+                  onChange={e => setShowTramZone(e.target.checked)}
+                  style={{ marginRight: 4 }}
+                />
+                Show Free Tram Zone
+              </label>
+            )}
+          </span>
         ))}
       </div>
       <MapContainer
@@ -112,6 +127,14 @@ export default function MapView() {
               </Popup>
             </Marker>
           ))}
+
+        {/* Free Tram Zone Polygon */}
+        {showTramZone && (
+          <GeoJSON
+            data={freeTramZone}
+            style={{ color: "green", fillColor: "green", fillOpacity: 0.6, weight: 2 }}
+          />
+        )}
       </MapContainer>
     </div>
   );
