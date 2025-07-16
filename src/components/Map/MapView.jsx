@@ -28,26 +28,26 @@ const redIcon = new L.Icon({
 });
 
 const categories = [
-  "education",
-  "medical",
-  "park",
-  "shopping",
-  "culture",
-  "station",
-  "other"
+  "Education",
+  "Medical",
+  "Park",
+  "Shopping",
+  "Culture & Entertainment",
+  "Station",
+  "Other"
 ];
 
 export default function MapView() {
   // State for selected property and category
   const [selectedProperty, setSelectedProperty] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState("education");
+  const [selectedCategory, setSelectedCategory] = useState("Education");
 
   // Facilities within 800m of selected property and matching category
   const filteredFacilities = selectedProperty
     ? facilities.filter(
         (fac) =>
           getDistanceMeters(selectedProperty.lat, selectedProperty.lng, fac.lat, fac.lng) <= 800 &&
-          fac.category === selectedCategory
+          fac.category === selectedCategory.toLowerCase()
       )
     : [];
 

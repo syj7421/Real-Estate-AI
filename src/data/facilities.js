@@ -1,30 +1,52 @@
 export const facilities = [
 
-
-
-  /* ---------- culture ---------- */
-  { name: "State Library of Victoria",              lat: -37.809811, lng: 144.965195, category: "culture" },      // :contentReference[oaicite:4]{index=4}  
-  { name: "Arts Centre Melbourne",                  lat: -37.82088712030129, lng: 144.968694813574, category: "culture" },
-  { name: "The Ian Potter Centre",                  lat: -37.816446062774276,  lng:144.9697676970711, category: "culture" },
-  { name: "National Gallery of Victoria (NGV)",     lat: -37.82205180762928,  lng: 144.96894925573662, category: "culture" },      // :contentReference[oaicite:5]{index=5}
-  { name: "ACMI",     lat: -37.8171344011688,   lng: 144.96847717951334, category: "culture" },      // :contentReference[oaicite:5]{index=5}
-  { name: "ArtVo",     lat: -37.81242775230953,  lng:  144.93741336369737, category: "culture" },      // :contentReference[oaicite:5]{index=5}
-  { name: "Australian Centre for Contemporary Art",     lat: -37.82618243765195,   lng:144.96667557340257, category: "culture" },      // :contentReference[oaicite:5]{index=5}
-  { name: "Outré Gallery",     lat: -37.81204572198343,    lng:144.96204071669513, category: "culture" },      // :contentReference[oaicite:5]{index=5}
-  { name: "Metartworld-World's Largest Indoor Scrap Metal Art Gallery",     lat:-37.8263661419272,   lng:144.94127026311585, category: "culture" },      // :contentReference[oaicite:5]{index=5}
-  { name: "AC/DC Lane Graffiti",     lat: -37.81494305009632,    lng:144.97074267903724, category: "culture" },      // :contentReference[oaicite:5]{index=5}
-  { name: "Fed Square",     lat: -37.8169771968245,  lng: 144.9692835574812,  category: "culture" },      // :contentReference[oaicite:5]{index=5}
-  { name: "Centre for Contemporary Photography",     lat: -37.808365592085345,   lng: 144.963919139995685,  category: "culture" },      // :contentReference[oaicite:5]{index=5}
-  { name: "Immigration Museum",     lat:-37.81863398060745,   lng: 144.96047615573664,   category: "culture" },      // :contentReference[oaicite:5]{index=5}
-  { name: "Melbourne Museum",     lat: -37.802756357982624,    lng: 144.97177496408412, category: "culture" },      // :contentReference[oaicite:5]{index=5}
-  { name: "City of Melbourne Collection",     lat: -37.8146674315949,   lng:  144.96665596467994, category: "culture" },      // :contentReference[oaicite:5]{index=5}
-  { name: "Hellenic Museum",     lat: -37.81168390386875,    lng: 144.95674252116672,  category: "culture" },      // :contentReference[oaicite:5]{index=5}
-  { name: "Royal Exhibition Building",     lat: -37.80428220742791,    lng:  144.97167165573663,  category: "culture" },      // :contentReference[oaicite:5]{index=5}
-  { name: "Old Treasury Building",     lat: -37.81275867285939,     lng:144.97441823748923 , category: "culture" },      // :contentReference[oaicite:5]{index=5}
-  { name: "Old Melbourne Gaol",     lat: -37.80726603423058,     lng:144.9653631007737, category: "culture" },      // :contentReference[oaicite:5]{index=5}
-  { name: "Children's Gallery (Melbourne Museum)",     lat: -37.802451163111996,     lng:144.97029836486035,  category: "culture" },      // :contentReference[oaicite:5]{index=5}
-  { name: "Victoria Police Museum",     lat: -37.813333040167386,    lng:144.95151405573668,  category: "culture" },      // :contentReference[oaicite:5]{index=5}
-  { name: "Australian Sports Museum",     lat: -37.81823177291917,   lng: 144.98425962505686,   category: "culture" },      // :contentReference[oaicite:5]{index=5}
+  /* ---------- culture & entertainment ---------- */
+  { name: "Crown Casino & Entertainment Complex",   lat: -37.823521, lng: 144.957962, category: "culture & entertainment" },        // :contentReference[oaicite:7]{index=7}
+  { name: "State Library of Victoria",              lat: -37.809811, lng: 144.965195, category: "culture & entertainment" },      // :contentReference[oaicite:4]{index=4}  
+  { name: "Arts Centre Melbourne",                  lat: -37.82088712030129, lng: 144.968694813574, category: "culture & entertainment" },
+  { name: "The Ian Potter Centre",                  lat: -37.816446062774276,  lng:144.9697676970711, category: "culture & entertainment" },
+  { name: "National Gallery of Victoria (NGV)",     lat: -37.82205180762928,  lng: 144.96894925573662, category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "ACMI",     lat: -37.8171344011688,   lng: 144.96847717951334, category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "ArtVo",     lat: -37.81242775230953,  lng:  144.93741336369737, category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Australian Centre for Contemporary Art",     lat: -37.82618243765195,   lng:144.96667557340257, category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Outré Gallery",     lat: -37.81204572198343,    lng:144.96204071669513, category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Metartworld-World's Largest Indoor Scrap Metal Art Gallery",     lat:-37.8263661419272,   lng:144.94127026311585, category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "AC/DC Lane Graffiti",     lat: -37.81494305009632,    lng:144.97074267903724, category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Fed Square",     lat: -37.8169771968245,  lng: 144.9692835574812,  category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Centre for Contemporary Photography",     lat: -37.808365592085345,   lng: 144.963919139995685,  category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Immigration Museum",     lat:-37.81863398060745,   lng: 144.96047615573664,   category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Melbourne Museum",     lat: -37.802756357982624,    lng: 144.97177496408412, category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "City of Melbourne Collection",     lat: -37.8146674315949,   lng:  144.96665596467994, category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Hellenic Museum",     lat: -37.81168390386875,    lng: 144.95674252116672,  category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Royal Exhibition Building",     lat: -37.80428220742791,    lng:  144.97167165573663,  category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Old Treasury Building",     lat: -37.81275867285939,     lng:144.97441823748923 , category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Old Melbourne Gaol",     lat: -37.80726603423058,     lng:144.9653631007737, category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Children's Gallery (Melbourne Museum)",     lat: -37.802451163111996,     lng:144.97029836486035,  category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Victoria Police Museum",     lat: -37.813333040167386,    lng:144.95151405573668,  category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Australian Sports Museum",     lat: -37.81823177291917,   lng: 144.98425962505686,   category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Forum Melbourne",     lat: -37.81633775466122,    lng: 144.96928415444975,  category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Hamer Hall",     lat: -37.819770827584435,    lng: 144.96799555302124,  category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Athenaeum Theatre",     lat:-37.814701000901145,    lng:144.96741441904368,   category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Melbourne Recital Centre",     lat: -37.82342328223915,   lng:  144.9674144189541,  category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Sidney Myer Music Bowl",     lat: -37.82388232115277,    lng: 144.9735794926065,   category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Regent Theatre",     lat:-37.81516009403589,   lng:  144.96766708603414,  category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Festival Hall",     lat:-37.81078622943049,   lng: 144.9463706017852,  category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Rod Laver Arena",     lat:-37.821165573965466,   lng:  144.97856334633445,  category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "John Cain Arena",     lat:-37.8220469701678,  lng:  144.98199657387792,  category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Margaret Court Arena",     lat:-37.820724871978484,   lng:  144.97744754785023,  category: "culture & entertainment" },      // :contentReference[oaicite:5]{index=5}
+  { name: "Marvel Stadium",                         lat: -37.816700, lng: 144.947500, category: "culture & entertainment" },
+  { name: "Melbourne Convention & Exhibition Centre", lat: -37.824200, lng: 144.958000, category: "culture & entertainment" },
+  { name: "Southbank Theatre", lat: -37.823367519741005,  lng: 144.96814657903727, category: "culture & entertainment" },
+  { name: "Her Majesty's Theatre", lat: -37.810383121888776,  lng: 144.96975100175632, category: "culture & entertainment" },
+  { name: "Melbourne Cricket Ground", lat: -37.819322785688634,   lng: 144.98321326369734, category: "culture & entertainment" },
+  { name: "AAMI Park", lat:-37.82393316425213,   lng:  144.98454363923378, category: "culture & entertainment" },
+  { name: "Melbourne Park (Tennis Precinct)", lat: -37.81985, lng: 144.97550, category: "culture & entertainment" }, 
+  { name: "Eureka Tower (Skydeck)", lat: -37.82192, lng: 144.96437, category: "culture & entertainment" },
+  { name: "Hosier Lane (Street Art)", lat: -37.81778, lng: 144.96910, category: "culture & entertainment" },
+  { name: "St Paul's Cathedral", lat: -37.81799, lng: 144.96983, category: "culture & entertainment" },
+  { name: "Parliament House Victoria", lat: -37.80954, lng: 144.97312, category: "culture & entertainment" },
+  { name: "Chinatown", lat: -37.80930, lng: 144.96280, category: "culture & entertainment" },
+  { name: "Koreatown", lat: -37.81351141304649,  lng: 144.9557799288662, category: "culture & entertainment" },
 
 
   /* ---------- shopping ---------- */
@@ -70,7 +92,6 @@ export const facilities = [
   { name: "Woolworths South Melbourne",  lat:-37.83008227944615,    lng: 144.9572835509701, category: "shopping" },     
   { name: "Woolworths Metro Southbank",  lat:-37.82526889628385,   lng: 144.95900016456542, category: "shopping" },     
   { name: "Woolworths Metro Collins Square",  lat:-37.81916697343303,  lng: 144.94990211251,  category: "shopping" },     
-
   { name: "Coles Central Melbourne CBD",  lat:-37.816793546831626,  lng: 144.9643215512951, category: "shopping" },     
   { name: "Coles Central Melbourne Central",  lat:-37.808995660600424, lng:144.9632057524581, category: "shopping" },     
   { name: "Coles Spencer St",  lat:-37.813810105026995,   lng:144.95213359476801, category: "shopping" },     
@@ -261,6 +282,7 @@ export const facilities = [
   { name: "The Royal Children's Hospital Melbourne",       lat:-37.79232203135292,  lng:   144.9497175114733, category: "medical" },
 
   /* ---------- park ---------- */
+  { name: "Royal Botanic Gardens", lat: -37.83042, lng: 144.97970, category: "park" }, 
   { name: "Flagstaff Gardens",                      lat: -37.81016779231764, lng: 144.9545842729658, category: "park"},
   { name: "Treasury Gardens",                       lat: -37.81400976356878, lng: 144.97585145850567, category: "park"},
   { name: "Birrarung Marr Park",                    lat: -37.818429988829955, lng: 144.97419802693375, category: "park" },
@@ -271,6 +293,7 @@ export const facilities = [
   { name: "Queen Victoria Gardens",                 lat: -37.82175190292371, lng: 144.97077861252845, category: "park" },
   { name: "Carlton Gardens",                        lat: -37.805210802349734, lng: 144.97131583951864, category: "park" },
 
+
   /* ---------- station ---------- */
   { name: "Flinders Street Station",                lat: -37.818100, lng: 144.966800, category: "station" },      // :contentReference[oaicite:6]{index=6}
   { name: "Southern Cross Station",                 lat: -37.818300, lng: 144.952500, category: "station" },
@@ -279,8 +302,5 @@ export const facilities = [
   { name: "Flagstaff Station",                      lat: -37.81185141464188, lng: 144.95619788883204, category: "station" },
 
   /* ---------- other ---------- */
-  { name: "Crown Casino & Entertainment Complex",   lat: -37.823521, lng: 144.957962, category: "other" },        // :contentReference[oaicite:7]{index=7}
-  { name: "Marvel Stadium",                         lat: -37.816700, lng: 144.947500, category: "other" },
-  { name: "Melbourne Convention & Exhibition Centre", lat: -37.824200, lng: 144.958000, category: "other" }
   
 ]; 
