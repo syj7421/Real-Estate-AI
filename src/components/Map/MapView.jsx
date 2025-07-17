@@ -9,6 +9,7 @@ import CustomerFacilMarker from "./CustomerFacilMarker";
 import ReactDOMServer from "react-dom/server";
 import { properties } from "../../data/properties";
 import { freeTramZone } from "../../data/freeTramZone";
+import melbourneCitySuburb from "../../data/house analysis/citySuburbs.json";
 
 // 1️⃣ Leaflet 기본 아이콘을 로컬 번들로 지정
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
@@ -127,7 +128,15 @@ export default function MapView() {
               </Popup>
             </Marker>
           ))}
-
+        <GeoJSON
+  data={melbourneCitySuburb}
+  style={{
+    color: "#333333",         // 테두리: 진한 회색
+    fillColor: "#999999",     // 채움: 중간 회색
+    fillOpacity: 0.25,
+    weight: 4
+  }}
+/>
         {/* Free Tram Zone Polygon */}
         {showTramZone && (
           <GeoJSON
