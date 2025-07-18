@@ -5,12 +5,11 @@ import { top50VicSchools } from '../../data/top50VicSchools';
 
 export default function SuburbChoropleth({ startYear, showSchools }) {
   const [geoData, setGeoData] = useState(null);
-  const paColumn = `PA_${startYear}_to_end`;
 
   useEffect(() => {
     // The file path was incorrect: it should use "house analysis" (with a space), not "house-analysis" (with a dash), and the extension is .geojson not .json
     // Try both .geojson and .json in case of static file server config issues
-    let url = `/every_PA_region/melbourneSuburbsWithChange_${startYear}.json`;
+    let url = `/every_PA_region/melbourneSuburbsWithChange_PA ${startYear}.json`;
     // If running in dev and .geojson fails (returns HTML), fallback to .json
     // We'll check for this in the fetch error handler below
     setGeoData(null);

@@ -9,7 +9,7 @@ import CustomerFacilMarker from "./CustomerFacilMarker";
 import ReactDOMServer from "react-dom/server";
 import { properties } from "../../data/properties";
 import { freeTramZone } from "../../data/freeTramZone";
-import melbourneCitySuburb from "../../data/house analysis/citySuburbs.json";
+import melbourneCitySuburb from "../../data/melbourne city analysis/melbourneCitySuburbs.json";
 
 // 1️⃣ Leaflet 기본 아이콘을 로컬 번들로 지정
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";

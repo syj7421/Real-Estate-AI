@@ -3,9 +3,9 @@ from pathlib import Path
 
 # ── 경로 설정 ─────────────────────────────────────────────────────────────
 BASE_DIR = Path("src/data")
-CSV_IN   = 'src/data/house analysis/PA_filtered_growth.csv'
-GEO_IN   = 'src/data/house analysis/melbourneSuburbs.json';
-OUT_DIR  = Path("src/data") / "house analysis" / "every_PA_region"
+CSV_IN   = 'src/data/suburb analysis/PA_suburb_every_year.csv'
+GEO_IN   = 'src/data/suburb analysis/main_suburbs.geojson';
+OUT_DIR  = Path("src/data") / "suburb analysis" / "every_PA_region"
 
 
 OUT_DIR.mkdir(parents=True, exist_ok=True)   # 빈 폴더가 없으면 생성
@@ -16,8 +16,8 @@ with open(CSV_IN, newline='', encoding="utf-8") as f:
     rows = list(reader)
     fieldnames = reader.fieldnames or (rows[0].keys() if rows else [])
 
-# 어떤 열들이 “PA_YYYY_to_end” 형태인지 동적으로 추출
-pa_cols = [col for col in fieldnames if re.fullmatch(r"PA_\d{4}_to_end", col)]
+# 어떤 열들이 “PA YYYY-24” 형태인지 동적으로 추출
+pa_cols = [col for col in fieldnames if re.fullmatch(r"PA \d{4}-24", col)]
 
 # suburb → {연도열: 값} 구조로 빌드
 growth_by_suburb = { row["Suburb"].strip(): { col: float(row[col]) if row[col] else None
@@ -40,7 +40,7 @@ for col in pa_cols:
         feat["properties"]["change"] = growth_by_suburb.get(name, {}).get(col)
 
     # 연도 추출 (예: "PA_2015_to_end" → "2015")
-    year = col.split("_")[1]
+    year = col.split("-")[0]
     out_path = OUT_DIR / f"melbourneSuburbsWithChange_{year}.geojson"
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(geo, f, ensure_ascii=False, indent=2)

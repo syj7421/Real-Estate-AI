@@ -6,7 +6,7 @@ import "leaflet/dist/leaflet.css";
 
 export default function Dashboard() {
   const [selectedMode, setSelectedMode] = useState("amenities"); // "amenities" or "growth"
-  const [startYear, setStartYear] = useState(2013); // For growth mode
+  const [startYear, setStartYear] = useState(2014); // For growth mode
   const [showSchools, setShowSchools] = useState(false); // For checkbox
 
   return (
@@ -52,7 +52,7 @@ export default function Dashboard() {
               onChange={(e) => setSelectedMode(e.target.value)}
               style={{ marginRight: "0.5em" }}
             />
-            House Price Growth (2013–2024)
+            House Price Growth (2014–2024)
           </label>
         </div>
       </div>
@@ -70,7 +70,7 @@ export default function Dashboard() {
               onChange={e => setStartYear(Number(e.target.value))}
               style={{ fontSize: "1rem", padding: "0.25rem 0.5rem" }}
             >
-              {Array.from({ length: 2023 - 2013 + 1 }, (_, i) => 2013 + i).map(year => (
+              {Array.from({ length: 2023 - 2014 + 1 }, (_, i) => 2014 + i).map(year => (
                 <option key={year} value={year}>{year}</option>
               ))}
             </select>
