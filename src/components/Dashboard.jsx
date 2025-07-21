@@ -6,12 +6,12 @@ import "leaflet/dist/leaflet.css";
 import WhyMelbourne from "./WhyMelbourne";
 
 export default function Dashboard() {
-  const [selectedMode, setSelectedMode] = useState("amenities"); // "why", "amenities", or "growth"
+  const [selectedMode, setSelectedMode] = useState("whyMelbourne"); // "whyMelbourne", "amenities", or "growth"
   const [startYear, setStartYear] = useState(2014); // For growth mode
   const [showSchools, setShowSchools] = useState(false); // For checkbox
 
   const modes = [
-    { value: "why", label: "Why Melbourne?" },
+    { value: "whyMelbourne", label: "Why Melbourne?" },
     { value: "amenities", label: "See Nearby Amenities" },
     { value: "growth", label: "House Price Growth (2014–2024)" },
   ];
