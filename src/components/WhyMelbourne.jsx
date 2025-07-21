@@ -4,7 +4,7 @@ import { Bar, Doughnut, Line } from "react-chartjs-2";
 import { Chart, BarElement, CategoryScale, LinearScale, Tooltip, ArcElement, Legend, LineElement, PointElement } from "chart.js";
 Chart.register(BarElement, CategoryScale, LinearScale, Tooltip, ArcElement, Legend, LineElement,PointElement);
 
-// 1. Bar Chart: Population Growth
+// 1. Bar Chart: Population Growth, from: https://www.abs.gov.au/statistics/people/population/regional-population/2023-24
 
 const groupedBarData = {
   labels: ["2022", "2023", "2024"],
@@ -103,6 +103,51 @@ const lineChartOptions = {
   animation: { duration: 1200 }
 };
 
+// 2. 
+const priceData = {
+  labels: ["Sydney",  "Brisbane", "Melbourne"],
+  datasets: [
+    {
+      label: "House Median Price (2024)",
+      data: [1496985, 1010566,947611],
+      backgroundColor: "rgba(25, 118, 210)", // 파란색 계열
+    },
+    {
+      label: "Unit Median Price (2024)",
+      data: [863257,718196, 617395],
+      backgroundColor: "rgba(255, 160, 0)", // 주황색 계열
+    },
+  ],
+};
+
+const priceOptions = {
+  plugins: {
+    legend: {
+      display: true,
+      position: "top",
+    },
+    tooltip: {
+      callbacks: {
+        label: (ctx) =>
+          `${ctx.dataset.label}: $${ctx.parsed.y.toLocaleString()}`,
+      },
+    },
+  },
+  scales: {
+    y: {
+      beginAtZero: true,
+      title: {
+        display: true,
+        text: "Price (AUD)",
+      },
+    },
+  },
+  animation: {
+    duration: 1200,
+  },
+  responsive: true
+};
+
 
 // 2. Animated Number Card
 function AnimatedNumber({ value, duration = 1.2, decimals = 2 }) {
@@ -121,23 +166,6 @@ function AnimatedNumber({ value, duration = 1.2, decimals = 2 }) {
   }, [value]);
   return <span>{value >= 1000000 ? `$${display.toFixed(2)}M` : display.toFixed(decimals)}</span>;
 }
-
-// 3. Price Forecast Bar Chart
-const forecastData = {
-  labels: ["2025", "2026"],
-  datasets: [
-    {
-      label: "Forecast (%)",
-      data: [3.5, 6],
-      backgroundColor: ["#1976d2", "#1976d2"]
-    }
-  ]
-};
-const forecastOptions = {
-  plugins: { legend: { display: false } },
-  scales: { y: { beginAtZero: true } },
-  animation: { duration: 1200 }
-};
 
 // 4. Rental Yield Horizontal Bar
 const rentalYieldData = {
@@ -201,7 +229,15 @@ export default function WhyMelbourne() {
         padding: "2rem"
       }}
     >
-      {/* 1. Bar Chart: Population Growth */}
+      {/* 1. Facts */}
+      <motion.div>
+      4th most liveable city in the world (2025 EIU) – ranked 1st in Australia
+
+Top 6 global city in Oxford Economics’ 2025 Global Cities Index
+      </motion.div>
+
+
+      {/* 2. Bar Chart: Population Growth */}
       <motion.div
   className="dashboard-card"
   style={{
@@ -226,7 +262,8 @@ export default function WhyMelbourne() {
 </motion.div>
 
 
-      {/* 2. Median House Price Number Card */}
+
+      {/* 3. Median House Price Number Card */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -236,23 +273,13 @@ export default function WhyMelbourne() {
       >
         <h3>💰 Median House Price</h3>
         <div style={{ fontSize: 32, fontWeight: 700, color: "#1976d2" }}>
-          <AnimatedNumber value={1.04} duration={1.2} decimals={2} />M
+          <AnimatedNumber value={947.62} duration={1.2} /> K
         </div>
-        <div style={{ color: "#888" }}>Melbourne (2024) – lower than Sydney</div>
+        <Bar data={priceData} options={priceOptions} />
+
       </motion.div>
 
-      {/* 3. Price Forecast Bar Chart */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3 }}
-        className="dashboard-card"
-        style={{ background: "#fff", borderRadius: "1rem", boxShadow: "0 2px 12px #0001", padding: "2rem" }}
-      >
-        <h3>📈 Price Forecast</h3>
-        <Bar data={forecastData} options={forecastOptions} />
-        <div style={{ color: "#888", marginTop: 8 }}>+3.5% in 2025, +6% in 2026 (KPMG prediction)</div>
-      </motion.div>
+
 
       {/* 4. Rental Yield Horizontal Bar */}
       <motion.div
