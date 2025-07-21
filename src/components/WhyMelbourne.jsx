@@ -1,29 +1,93 @@
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { Bar, Doughnut } from "react-chartjs-2";
-import { Chart, BarElement, CategoryScale, LinearScale, Tooltip, ArcElement } from "chart.js";
-Chart.register(BarElement, CategoryScale, LinearScale, Tooltip, ArcElement);
+import { Bar, Doughnut, Line } from "react-chartjs-2";
+import { Chart, BarElement, CategoryScale, LinearScale, Tooltip, ArcElement, Legend, LineElement, PointElement } from "chart.js";
+Chart.register(BarElement, CategoryScale, LinearScale, Tooltip, ArcElement, Legend, LineElement,PointElement);
 
 // 1. Bar Chart: Population Growth
-const growthData = [
-  { city: "Sydney", growth: 4.2 },
-  { city: "Brisbane", growth: 5.8 },
-  { city: "Melbourne", growth: 7.1 },
-  { city: "Adelaide", growth: 3.6 }
-];
-const barColors = growthData.map(d => d.city === "Melbourne" ? "#1976d2" : "#bdbdbd");
-const barChartData = {
-  labels: growthData.map(d => d.city),
+
+const groupedBarData = {
+  labels: ["2022", "2023", "2024"],
   datasets: [
     {
-      label: "Growth Rate (%)",
-      data: growthData.map(d => d.growth),
-      backgroundColor: barColors
+      label: "Brisbane",
+      data: [59156,81220,72930],
+      backgroundColor: "#aed581" // 연한 연두
+    },
+    {
+      label: "Sydney",
+      data: [37325,146702,	107538],
+      backgroundColor: "#ffcc80" // 연한 오렌지
+    },
+    {
+      label: "Melbourne",
+      data: [55038,167484,142637],
+      backgroundColor: "#1976d2" // 강조 파랑
     }
   ]
 };
-const barChartOptions = {
+
+const groupedBarOptions = {
   plugins: {
+    tooltip: {
+      callbacks: {
+        label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()} people`
+      }
+    },
+    legend: {
+      display: true,
+      position: "bottom",
+      labels: {
+        usePointStyle: true,
+        pointStyle: "rectRounded"
+      }
+    }
+  },
+  responsive: true,
+  scales: {
+    y: {
+      beginAtZero: true,
+      title: {
+        display: true      }
+    }
+  },
+  animation: {
+    duration: 1200
+  }
+};
+
+// 새로 추가한 Line Chart (인구 증가율 %)
+const lineChartData = {
+  labels: ["2022", "2023", "2024"],
+  datasets: [
+    {
+      label: "Brisbane",
+      data: [2.3, 3.1, 2.7],
+      borderColor: "#aed581",
+      backgroundColor: "#aed581",
+      tension: 0.3
+    },
+    {
+      label: "Sydney",
+      data: [0.7, 2.8, 2.0],
+      borderColor: "#ffcc80",
+      backgroundColor: "#ffcc80",
+      tension: 0.3
+    },
+    {
+      label: "Melbourne",
+      data: [1.1, 3.3, 2.7],
+      borderColor: "#1976d2",
+      backgroundColor: "#1976d2",
+      tension: 0.3
+    }
+  ]
+};
+
+const lineChartOptions = {
+  responsive: true,
+  plugins: {
+    legend: { position: "bottom" },
     tooltip: {
       callbacks: {
         label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y}%`
@@ -31,12 +95,14 @@ const barChartOptions = {
     }
   },
   scales: {
-    y: { beginAtZero: true }
+    y: {
+      beginAtZero: true,
+      title: { display: true }
+    }
   },
-  animation: {
-    duration: 1200
-  }
+  animation: { duration: 1200 }
 };
+
 
 // 2. Animated Number Card
 function AnimatedNumber({ value, duration = 1.2, decimals = 2 }) {
@@ -137,16 +203,28 @@ export default function WhyMelbourne() {
     >
       {/* 1. Bar Chart: Population Growth */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1 }}
-        className="dashboard-card"
-        style={{ background: "#fff", borderRadius: "1rem", boxShadow: "0 2px 12px #0001", padding: "2rem" }}
-      >
-        <h3>Melbourne – Fastest Growing Major City in Australia</h3>
-        <div style={{ color: "#888", marginBottom: 8 }}>Population Growth Rate (2020–2024)</div>
-        <Bar data={barChartData} options={barChartOptions} />
-      </motion.div>
+  className="dashboard-card"
+  style={{
+    background: "#fff",
+    borderRadius: "1rem",
+    boxShadow: "0 2px 12px #0001",
+    padding: "2rem",
+    display: "flex",
+    flexDirection: "column",
+    gap: "2rem"
+  }}
+>
+  <h3>The Fastest Growing City in Australia</h3>
+
+  <div>
+    <Bar data={groupedBarData} options={groupedBarOptions} />
+  </div>
+
+  <div>
+    <Line data={lineChartData} options={lineChartOptions} />
+  </div>
+</motion.div>
+
 
       {/* 2. Median House Price Number Card */}
       <motion.div
