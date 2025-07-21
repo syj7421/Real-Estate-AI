@@ -3,11 +3,18 @@ import MapView from "./Map/MapView";
 import SuburbChoropleth from "./Map/SuburbChoropleth";
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import WhyMelbourne from "./WhyMelbourne";
 
 export default function Dashboard() {
-  const [selectedMode, setSelectedMode] = useState("amenities"); // "amenities" or "growth"
+  const [selectedMode, setSelectedMode] = useState("amenities"); // "why", "amenities", or "growth"
   const [startYear, setStartYear] = useState(2014); // For growth mode
   const [showSchools, setShowSchools] = useState(false); // For checkbox
+
+  const modes = [
+    { value: "why", label: "Why Melbourne?" },
+    { value: "amenities", label: "See Nearby Amenities" },
+    { value: "growth", label: "House Price Growth (2014–2024)" },
+  ];
 
   return (
     <div>
@@ -22,38 +29,27 @@ export default function Dashboard() {
       }}>
         <h2 style={{ margin: 0, color: "#333" }}>Real Estate Dashboard</h2>
         <div style={{ display: "flex", gap: "1.5rem" }}>
-          <label style={{ 
-            display: "flex", 
-            alignItems: "center", 
-            cursor: "pointer",
-            fontWeight: selectedMode === "amenities" ? "bold" : "normal"
-          }}>
-            <input
-              type="radio"
-              name="mode-selector"
-              value="amenities"
-              checked={selectedMode === "amenities"}
-              onChange={(e) => setSelectedMode(e.target.value)}
-              style={{ marginRight: "0.5em" }}
-            />
-            See Nearby Amenities
-          </label>
-          <label style={{ 
-            display: "flex", 
-            alignItems: "center", 
-            cursor: "pointer",
-            fontWeight: selectedMode === "growth" ? "bold" : "normal"
-          }}>
-            <input
-              type="radio"
-              name="mode-selector"
-              value="growth"
-              checked={selectedMode === "growth"}
-              onChange={(e) => setSelectedMode(e.target.value)}
-              style={{ marginRight: "0.5em" }}
-            />
-            House Price Growth (2014–2024)
-          </label>
+          {modes.map((mode) => (
+            <label
+              key={mode.value}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                cursor: "pointer",
+                fontWeight: selectedMode === mode.value ? "bold" : "normal",
+              }}
+            >
+              <input
+                type="radio"
+                name="mode-selector"
+                value={mode.value}
+                checked={selectedMode === mode.value}
+                onChange={(e) => setSelectedMode(e.target.value)}
+                style={{ marginRight: "0.5em" }}
+              />
+              {mode.label}
+            </label>
+          ))}
         </div>
       </div>
 
@@ -92,7 +88,7 @@ export default function Dashboard() {
       {/* Conditional content rendering */}
       {selectedMode === "amenities" ? (
         <MapView />
-      ) : (
+      ) : selectedMode === "growth" ? (
         <div style={{ height: "90vh", width: "100%" }}>
           <MapContainer
             center={[-37.8136, 144.9631]}
@@ -106,7 +102,9 @@ export default function Dashboard() {
             <SuburbChoropleth startYear={startYear} showSchools={showSchools} />
           </MapContainer>
         </div>
+      ) : (
+        <WhyMelbourne/>
       )}
     </div>
   );
-} 
+}
