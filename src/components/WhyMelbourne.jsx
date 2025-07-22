@@ -230,7 +230,16 @@ export default function WhyMelbourne() {
       }}
     >
       {/* 1. Facts */}
-      <motion.div>
+      <motion.div
+      className="dashboard-card"
+      style={{
+        background: "#fff",
+        borderRadius: "1rem",
+        boxShadow: "0 2px 12px #0001",
+        padding: "2rem",
+        display: "flex",
+        flexDirection: "column",
+        gap: "2rem"}}>
       4th most liveable city in the world (2025 EIU) – ranked 1st in Australia
 
 Top 6 global city in Oxford Economics’ 2025 Global Cities Index
@@ -265,64 +274,33 @@ Top 6 global city in Oxford Economics’ 2025 Global Cities Index
 
       {/* 3. Median House Price Number Card */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2 }}
-        className="dashboard-card"
-        style={{ background: "#fff", borderRadius: "1rem", boxShadow: "0 2px 12px #0001", padding: "2rem", display: "flex", flexDirection: "column", alignItems: "center" }}
-      >
-        <h3>💰 Median House Price</h3>
-        <div style={{ fontSize: 32, fontWeight: 700, color: "#1976d2" }}>
-          <AnimatedNumber value={947.62} duration={1.2} /> K
-        </div>
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.2 }}
+    className="dashboard-card"
+    style={{
+      background: "#fff",
+      borderRadius: "1rem",
+      boxShadow: "0 2px 12px #0001",
+      padding: "2rem",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center", // 👈 추가
+    }}
+>
+      <h3>💰 Median House Price</h3>
+      <h3>3rd in Australia</h3>
+
+      <div style={{ fontSize: 32, fontWeight: 700, color: "#1976d2", marginBottom: "1rem" }}>
+        <AnimatedNumber value={947.62} duration={1.2} /> K
+      </div>
+      <div style={{ width: "100%" }}>
         <Bar data={priceData} options={priceOptions} />
-
+      </div>
       </motion.div>
 
 
-
-      {/* 4. Rental Yield Horizontal Bar */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4 }}
-        className="dashboard-card"
-        style={{ background: "#fff", borderRadius: "1rem", boxShadow: "0 2px 12px #0001", padding: "2rem" }}
-      >
-        <h3>🏢 Rental Yield <span title="ℹ️ Average: 4.2%, Max: 6.9% (units)">ℹ️</span></h3>
-        <Bar data={rentalYieldData} options={rentalYieldOptions} />
-        <div style={{ color: "#888", marginTop: 8 }}>Average: 4.2%, Up to 6.9% (units)</div>
-      </motion.div>
-
-      {/* 5. Population Rank Donut Chart */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
-        className="dashboard-card"
-        style={{ background: "#fff", borderRadius: "1rem", boxShadow: "0 2px 12px #0001", padding: "2rem" }}
-      >
-        <h3>🧍 Population Rank</h3>
-        <Doughnut data={populationData} options={populationOptions} />
-        <div style={{ color: "#888", marginTop: 8 }}>5.35M, 2nd largest in Australia</div>
-      </motion.div>
-
-      {/* 6. Infrastructure Projects Text Card */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6 }}
-        className="dashboard-card"
-        style={{ background: "#fff", borderRadius: "1rem", boxShadow: "0 2px 12px #0001", padding: "2rem" }}
-      >
-        <h3>🚉 Infrastructure Projects</h3>
-        <ul style={{ color: "#1976d2", fontWeight: 500, margin: 0, paddingLeft: 20 }}>
-          <li>Suburban Rail Loop</li>
-          <li>North East Link</li>
-          <li>Metro Tunnel</li>
-          <li>West Gate Tunnel</li>
-        </ul>
-      </motion.div>
     </motion.div>
   );
 }
