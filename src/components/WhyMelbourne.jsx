@@ -281,65 +281,11 @@ export default function WhyMelbourne() {
         </div>
       </motion.div>
 
-      {/* 4. Rental Yield Horizontal Bar */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4 }}
-        className="dashboard-card"
-        style={{
-          background: "#fff",
-          borderRadius: "1rem",
-          boxShadow: "0 2px 12px rgba(0,0,0,0.1)",
-          padding: "2rem"
-        }}
-      >
-        <h3 style={{ color: '#1976d2', margin: 0 }}>🏢 Rental Yield <span title="ℹ️ Average: 4.2%, Max: 6.9% (units)">ℹ️</span></h3>
-        <Bar data={rentalYieldData} options={rentalYieldOptions} />
-        <div style={{ color: "#888", marginTop: 8 }}>Average: 4.2%, Up to 6.9% (units)</div>
-      </motion.div>
+      {/* 4. Median House Price Number Card */}
 
-      {/* 5. Population Rank Donut Chart */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
-        className="dashboard-card"
-        style={{
-          background: "#fff",
-          borderRadius: "1rem",
-          boxShadow: "0 2px 12px rgba(0,0,0,0.1)",
-          padding: "2rem"
-        }}
-      >
-        <h3 style={{ color: '#1976d2', margin: 0 }}>🧍 Population Rank</h3>
-        <Doughnut data={populationData} options={populationOptions} />
-        <div style={{ color: "#888", marginTop: 8 }}>5.35M, 2nd largest in Australia</div>
-      </motion.div>
 
-      {/* 6. Infrastructure Projects Text Card */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6 }}
-        className="dashboard-card"
-        style={{
-          background: "#fff",
-          borderRadius: "1rem",
-          boxShadow: "0 2px 12px rgba(0,0,0,0.1)",
-          padding: "2rem",
-          color: '#1976d2',
-          fontWeight: 600
-        }}
-      >
-        <h3 style={{ color: '#1976d2', margin: 0 }}>🚉 Infrastructure Projects</h3>
-        <ul style={{ color: "#1976d2", fontWeight: 500, margin: 0, paddingLeft: 20 }}>
-          <li>Suburban Rail Loop</li>
-          <li>North East Link</li>
-          <li>Metro Tunnel</li>
-          <li>West Gate Tunnel</li>
-        </ul>
-      </motion.div>
+      
+
     </motion.div>
   );
 }

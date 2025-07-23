@@ -1,7 +1,7 @@
 {
   "name": "real-estate-AI",
   "version": "0.1.0",
-  "homepage": "https://syj7421.github.io/Real-Estate-AI",
+  "homepage": "https://www.whymelbourne.com",
   "private": true,
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.16.10",
