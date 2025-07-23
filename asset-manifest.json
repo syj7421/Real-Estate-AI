@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Real-Estate-AI/static/css/main.2e662a65.css",
-    "main.js": "/Real-Estate-AI/static/js/main.48a1199c.js",
-    "index.html": "/Real-Estate-AI/index.html",
-    "main.2e662a65.css.map": "/Real-Estate-AI/static/css/main.2e662a65.css.map",
-    "main.48a1199c.js.map": "/Real-Estate-AI/static/js/main.48a1199c.js.map"
+    "main.css": "/static/css/main.2e662a65.css",
+    "main.js": "/static/js/main.f84fa747.js",
+    "index.html": "/index.html",
+    "main.2e662a65.css.map": "/static/css/main.2e662a65.css.map",
+    "main.f84fa747.js.map": "/static/js/main.f84fa747.js.map"
   },
   "entrypoints": [
     "static/css/main.2e662a65.css",
-    "static/js/main.48a1199c.js"
+    "static/js/main.f84fa747.js"
   ]
 }
