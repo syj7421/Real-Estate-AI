@@ -3,23 +3,43 @@ import { GeoJSON, CircleMarker, Tooltip } from 'react-leaflet';
 import { getChoroplethColor } from '../../utils/colorScale';
 import { top50VicSchools } from '../../data/top50VicSchools';
 
+// ✅ GeoJSON 정적 import
+import geo2014 from '../../data/suburb analysis/every_PA_region/melbourneSuburbsWithChange_PA_2014.json';
+import geo2015 from '../../data/suburb analysis/every_PA_region/melbourneSuburbsWithChange_PA_2015.json';
+import geo2016 from '../../data/suburb analysis/every_PA_region/melbourneSuburbsWithChange_PA_2016.json';
+import geo2017 from '../../data/suburb analysis/every_PA_region/melbourneSuburbsWithChange_PA_2017.json';
+import geo2018 from '../../data/suburb analysis/every_PA_region/melbourneSuburbsWithChange_PA_2018.json';
+import geo2019 from '../../data/suburb analysis/every_PA_region/melbourneSuburbsWithChange_PA_2019.json';
+import geo2020 from '../../data/suburb analysis/every_PA_region/melbourneSuburbsWithChange_PA_2020.json';
+import geo2021 from '../../data/suburb analysis/every_PA_region/melbourneSuburbsWithChange_PA_2021.json';
+import geo2022 from '../../data/suburb analysis/every_PA_region/melbourneSuburbsWithChange_PA_2022.json';
+import geo2023 from '../../data/suburb analysis/every_PA_region/melbourneSuburbsWithChange_PA_2023.json';
+
+// ✅ 연도별 GeoJSON 매핑
+const geoMap = {
+  2014: geo2014,
+  2015: geo2015,
+  2016: geo2016,
+  2017: geo2017,
+  2018: geo2018,
+  2019: geo2019,
+  2020: geo2020,
+  2021: geo2021,
+  2022: geo2022,
+  2023: geo2023,
+};
+
 export default function SuburbChoropleth({ startYear, showSchools }) {
   const [geoData, setGeoData] = useState(null);
 
   useEffect(() => {
-    // The file path was incorrect: it should use "house analysis" (with a space), not "house-analysis" (with a dash), and the extension is .geojson not .json
-    // Try both .geojson and .json in case of static file server config issues
-    let url = `/every_PA_region/melbourneSuburbsWithChange_PA ${startYear}.json`;
-    // If running in dev and .geojson fails (returns HTML), fallback to .json
-    // We'll check for this in the fetch error handler below
-    setGeoData(null);
-    fetch(url)
-      .then(res => res.json())
-      .then(setGeoData)
-      .catch(err => {
-        setGeoData(null);
-        console.error('Failed to load GeoJSON:', err);
-      });
+    const data = geoMap[startYear];
+    if (data) {
+      setGeoData(data);
+    } else {
+      setGeoData(null);
+      console.error('No GeoJSON found for year:', startYear);
+    }
   }, [startYear]);
 
   if (!geoData) {
@@ -43,6 +63,7 @@ export default function SuburbChoropleth({ startYear, showSchools }) {
   return (
     <>
       <GeoJSON
+        key={startYear} 
         data={geoData}
         style={styleFeature}
         onEachFeature={onEachFeature}
