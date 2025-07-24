@@ -120,16 +120,21 @@ export default function Dashboard() {
           <img
     src="/flinders.jpg"
     alt="Melbourne F1"
-    className="absolute inset-0 w-full h-full object-cover opacity-80 blur-[1px] group-hover:opacity-50 transition"
+    className="absolute inset-0 w-full -z-1 h-full object-cover opacity-80 blur-[1px] group-hover:opacity-50 transition"
   />
-          <CardHeader><CardTitle>Why Melbourne?</CardTitle></CardHeader>
-          <Separator />
-          <CardContent className="space-y-2">
-            <p className="text-gray-700">• 4th most liveable city (2025 EIU)</p>
-            <p className="text-gray-700">• Top 6 global city (Oxford 2025)</p>
-            <p className="text-gray-700">• AAA</p>
 
-          </CardContent>
+
+            <div className="relative z-10 p-5 text-white">
+    <h3 className="text-lg font-semibold drop-shadow-md">
+    Why Melbourne?
+    </h3>
+    <p className="text-white">• 4th most liveable city in the world(2025 EIU)</p>
+            <p className="text-white">• Top 6 global city in the world(Oxford 2025)</p>
+            <p className="text-white">• One of only 11 countries with a perfect AAA credit rating</p>
+    
+
+  </div>
+          
         </Card>
 
         {/* 2. Population Growth */}
@@ -149,7 +154,7 @@ export default function Dashboard() {
   <img
     src="/formula.jpg"
     alt="Melbourne F1"
-    className="absolute inset-0 w-full h-full object-cover opacity-80 blur-[1px] group-hover:opacity-50 transition"
+    className="absolute inset-0 -z-1 w-full h-full object-cover opacity-80 blur-[1px] group-hover:opacity-50 transition"
   />
   <div className="relative z-10 p-5 text-white">
     <h3 className="text-lg font-semibold drop-shadow-md">
@@ -204,15 +209,22 @@ export default function Dashboard() {
           <img
     src="/skyscrapers.jpg"
     alt="Melbourne F1"
-    className="absolute inset-0 w-full h-full object-cover opacity-80 blur-[1px] group-hover:opacity-50 transition"
+    className="absolute inset-0 -z-1 w-full h-full object-cover opacity-80 blur-[1px] group-hover:opacity-50 transition"
   />
+  <div className="relative z-10 p-5 text-white">
+    <h3 className="text-lg font-semibold drop-shadow-md">
+    Residential Permits in CBD Since 2016
+    </h3>
+    <h4>Only</h4>
+    <AnimatedNumber value={1} decimals={0} />
 
-          <CardHeader><CardTitle>Residential Permits in CBD Since 2016</CardTitle></CardHeader>
+  </div>
+
+          <CardHeader><CardTitle></CardTitle></CardHeader>
           <Separator />
 
 
           <CardContent className="flex justify-center">
-          <AnimatedNumber value={1} decimals={0} />
 
           </CardContent>
         </Card>
