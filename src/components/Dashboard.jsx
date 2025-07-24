@@ -1,6 +1,6 @@
 // src/components/Dashboard.jsx
 import React, { useEffect, useRef } from "react";
-import { Bar, Line, Doughnut } from "react-chartjs-2";
+import { Bar, Line } from "react-chartjs-2";
 import {
   Chart,
   BarElement,
@@ -17,7 +17,7 @@ import DashboardLayout from "./ui/DashboardLayout";
 import { Card, CardHeader, CardTitle, CardContent } from "./ui/card";
 import { Separator } from "./ui/separator";
 import { Badge } from "./ui/badge";
-import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "./ui/tooltip";
+import { TooltipProvider } from "./ui/tooltip";
 import { AnimatedNumber } from "./AnimatedNumber";
 
 // register Chart.js plugins
@@ -104,32 +104,6 @@ const priceOptions = {
   animation: { duration: 1200 },
 };
 
-// 4. Rental yield horizontal bar
-const rentalYieldData = {
-  labels: ["Average","Max"],
-  datasets: [{ label: "Yield %", data: [4.2,6.9], backgroundColor: ["#5ec6c6","#ffb366"] }],
-};
-const rentalYieldOptions = {
-  indexAxis: "y",
-  scales: { x: { beginAtZero: true, max: 7.5 } },
-  plugins: { legend: { display: false }, tooltip: { enabled: true } },
-  animation: { duration: 1200 },
-};
-
-// 5. Population donut chart
-const populationData = {
-  labels: ["Sydney","Melbourne","Brisbane","Adelaide"],
-  datasets: [{ data: [5.73,5.35,2.62,1.39], backgroundColor: ["#bdbdbd","#1976d2","#5ec6c6","#ffb366"] }],
-};
-const populationOptions = {
-  cutout: "70%",
-  plugins: {
-    legend: { position: "bottom" },
-    tooltip: { callbacks: { label: ctx => `${ctx.label}: ${ctx.parsed}M` } }
-  },
-  animation: { duration: 1200 },
-};
-
 
 
 export default function Dashboard() {
@@ -155,7 +129,7 @@ export default function Dashboard() {
 
         {/* 2. Population Growth */}
         <Card className="bg-white">
-          <CardHeader><CardTitle>Fastest Growing City</CardTitle></CardHeader>
+          <CardHeader><CardTitle>Fastest Growing City in Australia</CardTitle></CardHeader>
           <Separator />
           <CardContent>
             <Bar data={groupedBarData} options={groupedBarOptions} />
@@ -172,16 +146,31 @@ export default function Dashboard() {
             <span className="text-4xl font-bold">
               <Badge variant="outline">$947.6K</Badge>
             </span>
+            <span className="text-4xl font-bold">
+              <Badge variant="outline">3rd among major cities in Australia</Badge>
+            </span>
             <div className="w-full mt-4">
               <Bar data={priceData} options={priceOptions} />
             </div>
           </CardContent>
         </Card>
 
-        {/* 4. Top Universities */}
+        {/* 4. Population Donut */}
+        <Card className="bg-white">
+          <CardHeader><CardTitle>Residential Permits in CBD Since 2016</CardTitle></CardHeader>
+          <Separator />
+
+
+          <CardContent className="flex justify-center">
+          <AnimatedNumber value={1} decimals={0} />
+
+          </CardContent>
+        </Card>
+
+        {/* 5. Top Universities */}
         <Card className="bg-white">
   <CardHeader>
-    <CardTitle>Home to World class Universities (QS World rankings 2025)</CardTitle>
+    <CardTitle>Home to World class Universities (QS World Rankings 2025)</CardTitle>
   </CardHeader>
   <Separator />
   <CardContent className="flex flex-col gap-3">
@@ -218,29 +207,20 @@ export default function Dashboard() {
 </Card>
 
 
-
-
-
-
-        {/* 5. Population Donut */}
-        <Card className="bg-white">
-          <CardHeader><CardTitle>City Populations (M)</CardTitle></CardHeader>
-          <Separator />
-          <CardContent className="flex justify-center">
-            <Doughnut data={populationData} options={populationOptions} />
-          </CardContent>
-        </Card>
-
         {/* 6. Projected Growth */}
-        <Card className="bg-white text-center">
-          <CardHeader><CardTitle>Projected Growth</CardTitle></CardHeader>
-          <Separator />
-          <CardContent>
-            <span className="text-5xl font-extrabold text-indigo-600">
-              <AnimatedNumber value={3.5} decimals={1} />%
-            </span>
-          </CardContent>
-        </Card>
+        <Card className="relative overflow-hidden cursor-pointer group rounded-xl shadow-md">
+  <img
+    src="/formula.jpg"
+    alt="Melbourne F1"
+    className="absolute inset-0 w-full h-full object-cover opacity-70 blur-[2px] group-hover:opacity-50 transition"
+  />
+  <div className="relative z-10 p-5 text-white">
+    <h3 className="text-lg font-semibold drop-shadow-md">
+      Centre of Global Events and Cultural Diversity
+    </h3>
+
+  </div>
+</Card>
       </DashboardLayout>
     </TooltipProvider>
   );
