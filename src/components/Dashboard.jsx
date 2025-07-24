@@ -94,7 +94,7 @@ const priceOptions = {
   responsive: true,
   scales: { y: { beginAtZero: true, title: { display: true, text: "Price (AUD)" } } },
   plugins: {
-    legend: { position: "top" },
+    legend: { position: "bottom" },
     tooltip: {
       callbacks: {
         label: ctx => `${ctx.dataset.label}: $${ctx.parsed.y.toLocaleString()}`
@@ -116,7 +116,12 @@ export default function Dashboard() {
     <TooltipProvider> {/* make sure App.jsx wraps in <TooltipProvider> */}
       <DashboardLayout>
         {/* 1. Facts */}
-        <Card className="bg-white">
+        <Card className="relative overflow-hidden cursor-pointer group  shadow-md">
+          <img
+    src="/flinders.jpg"
+    alt="Melbourne F1"
+    className="absolute inset-0 w-full h-full object-cover opacity-80 blur-[1px] group-hover:opacity-50 transition"
+  />
           <CardHeader><CardTitle>Why Melbourne?</CardTitle></CardHeader>
           <Separator />
           <CardContent className="space-y-2">
@@ -133,13 +138,89 @@ export default function Dashboard() {
           <Separator />
           <CardContent>
             <Bar data={groupedBarData} options={groupedBarOptions} />
-            <Separator className="my-4" />
-            <Line data={lineChartData} options={lineChartOptions} />
+            {/* <Separator className="my-4" />
+            <Line data={lineChartData} options={lineChartOptions} /> */}
           </CardContent>
         </Card>
 
-        {/* 3. Median Price */}
-        <Card className="bg-white flex flex-col items-center">
+        {/* 3.  */}
+
+        <Card className="relative overflow-hidden cursor-pointer group  shadow-md">
+  <img
+    src="/formula.jpg"
+    alt="Melbourne F1"
+    className="absolute inset-0 w-full h-full object-cover opacity-80 blur-[1px] group-hover:opacity-50 transition"
+  />
+  <div className="relative z-10 p-5 text-white">
+    <h3 className="text-lg font-semibold drop-shadow-md">
+      Centre of Global Events and Cultural Diversity
+    </h3>
+
+  </div>
+</Card>
+
+ {/* 4. Top Universities */}
+ <Card className="bg-white">
+          
+          <CardHeader>
+            <CardTitle>Home to World class Universities (QS World Rankings 2025)</CardTitle>
+          </CardHeader>
+          <Separator />
+          <CardContent className="flex flex-col gap-3">
+        
+            {[
+              { rank: 19, logo: "/uniLogos/unimelb.png", name: "University of Melbourne" },
+              { rank: 36, logo: "/uniLogos/monash.png",       name: "Monash University"      },
+              { rank: 125, logo: "/uniLogos/rmit.png",        name: "RMIT"                   },
+            ].map(({ rank, logo, name }) => (
+              <div key={rank}
+                   className="flex items-center p-2 rounded-md border shadow-sm space-x-3">
+        
+                {/* 순위 + 로고 영역 */}
+                <div className="flex items-center w-20 gap-2">
+                  {/* 숫자는 왼쪽 정렬, 폰트 크기 작게 */}
+                  <div className="text-xl font-bold text-blue-600 min-w-[2.5rem] text-left">
+                    {rank}
+                  </div>
+                  {/* 로고도 작게 */}
+                  <img src={logo}
+                       alt={`${name} Logo`}
+                       className="w-6 h-6 object-contain" />
+                </div>
+        
+                {/* 학교명: 폰트 크기 작게, 한 줄 유지 */}
+                <div className="flex-1 text-base font-medium whitespace-nowrap
+                                text-[clamp(0.75rem,1.2vw,0.875rem)]">
+                  {name}
+                </div>
+              </div>
+            ))}
+        
+          </CardContent>
+        </Card>
+
+        {/* 5. */}
+        <Card className="relative overflow-hidden cursor-pointer group  shadow-md">
+          <img
+    src="/skyscrapers.jpg"
+    alt="Melbourne F1"
+    className="absolute inset-0 w-full h-full object-cover opacity-80 blur-[1px] group-hover:opacity-50 transition"
+  />
+
+          <CardHeader><CardTitle>Residential Permits in CBD Since 2016</CardTitle></CardHeader>
+          <Separator />
+
+
+          <CardContent className="flex justify-center">
+          <AnimatedNumber value={1} decimals={0} />
+
+          </CardContent>
+        </Card>
+
+       
+
+{/* 6.  */}
+<Card className="bg-white flex flex-col items-center">
           <CardHeader><CardTitle>Median House Price</CardTitle></CardHeader>
           <Separator />
           <CardContent className="text-center">
@@ -155,72 +236,8 @@ export default function Dashboard() {
           </CardContent>
         </Card>
 
-        {/* 4. Population Donut */}
-        <Card className="bg-white">
-          <CardHeader><CardTitle>Residential Permits in CBD Since 2016</CardTitle></CardHeader>
-          <Separator />
 
-
-          <CardContent className="flex justify-center">
-          <AnimatedNumber value={1} decimals={0} />
-
-          </CardContent>
-        </Card>
-
-        {/* 5. Top Universities */}
-        <Card className="bg-white">
-  <CardHeader>
-    <CardTitle>Home to World class Universities (QS World Rankings 2025)</CardTitle>
-  </CardHeader>
-  <Separator />
-  <CardContent className="flex flex-col gap-3">
-
-    {[
-      { rank: 19, logo: "/uniLogos/unimelb.png", name: "University of Melbourne" },
-      { rank: 36, logo: "/uniLogos/monash.png",       name: "Monash University"      },
-      { rank: 125, logo: "/uniLogos/rmit.png",        name: "RMIT"                   },
-    ].map(({ rank, logo, name }) => (
-      <div key={rank}
-           className="flex items-center p-2 rounded-md border shadow-sm space-x-3">
-
-        {/* 순위 + 로고 영역 */}
-        <div className="flex items-center w-20 gap-2">
-          {/* 숫자는 왼쪽 정렬, 폰트 크기 작게 */}
-          <div className="text-xl font-bold text-blue-600 min-w-[2.5rem] text-left">
-            {rank}
-          </div>
-          {/* 로고도 작게 */}
-          <img src={logo}
-               alt={`${name} Logo`}
-               className="w-6 h-6 object-contain" />
-        </div>
-
-        {/* 학교명: 폰트 크기 작게, 한 줄 유지 */}
-        <div className="flex-1 text-base font-medium whitespace-nowrap
-                        text-[clamp(0.75rem,1.2vw,0.875rem)]">
-          {name}
-        </div>
-      </div>
-    ))}
-
-  </CardContent>
-</Card>
-
-
-        {/* 6. Projected Growth */}
-        <Card className="relative overflow-hidden cursor-pointer group rounded-xl shadow-md">
-  <img
-    src="/formula.jpg"
-    alt="Melbourne F1"
-    className="absolute inset-0 w-full h-full object-cover opacity-70 blur-[2px] group-hover:opacity-50 transition"
-  />
-  <div className="relative z-10 p-5 text-white">
-    <h3 className="text-lg font-semibold drop-shadow-md">
-      Centre of Global Events and Cultural Diversity
-    </h3>
-
-  </div>
-</Card>
+        
       </DashboardLayout>
     </TooltipProvider>
   );

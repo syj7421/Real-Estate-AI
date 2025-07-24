@@ -9,7 +9,7 @@ import {
 
 const modes = [
   { value: "whyMelbourne", label: "Why Melbourne?" },
-  { value: "amenities",     label: "Amenities" },
+  { value: "amenities",     label: "Explore" },
   { value: "growth",        label: "Growth" },
 ];
 
