@@ -1,6 +1,6 @@
 // src/components/Dashboard.jsx
 import React, { useEffect, useRef } from "react";
-import { Bar, Line } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import {
   Chart,
   BarElement,
@@ -60,34 +60,34 @@ const groupedBarOptions = {
 };
 
 // 2. Population growth rate line chart
-const lineChartData = {
-  labels: ["2022", "2023", "2024"],
-  datasets: [
-    { label: "Brisbane", data: [2.3,3.1,2.7], borderColor: "#5ec6c6", backgroundColor: "#5ec6c6", tension: 0.3 },
-    { label: "Sydney",   data: [0.7,2.8,2.0], borderColor: "#ffb366", backgroundColor: "#ffb366", tension: 0.3 },
-    { label: "Melbourne",data: [1.1,3.3,2.7], borderColor: "#1976d2", backgroundColor: "#1976d2", tension: 0.3 },
-  ],
-};
-const lineChartOptions = {
-  responsive: true,
-  scales: { y: { beginAtZero: true, title: { display: true } } },
-  plugins: {
-    legend: { position: "bottom" },
-    tooltip: {
-      callbacks: {
-        label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y}%`
-      }
-    }
-  },
-  animation: { duration: 1200 },
-};
+// const lineChartData = {
+//   labels: ["2022", "2023", "2024"],
+//   datasets: [
+//     { label: "Brisbane", data: [2.3,3.1,2.7], borderColor: "#5ec6c6", backgroundColor: "#5ec6c6", tension: 0.3 },
+//     { label: "Sydney",   data: [0.7,2.8,2.0], borderColor: "#ffb366", backgroundColor: "#ffb366", tension: 0.3 },
+//     { label: "Melbourne",data: [1.1,3.3,2.7], borderColor: "#1976d2", backgroundColor: "#1976d2", tension: 0.3 },
+//   ],
+// };
+// const lineChartOptions = {
+//   responsive: true,
+//   scales: { y: { beginAtZero: true, title: { display: true } } },
+//   plugins: {
+//     legend: { position: "bottom" },
+//     tooltip: {
+//       callbacks: {
+//         label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y}%`
+//       }
+//     }
+//   },
+//   animation: { duration: 1200 },
+// };
 
 // 3. Median house & unit price
 const priceData = {
   labels: ["Sydney","Brisbane","Melbourne"],
   datasets: [
-    { label: "House Median Price (2024)", data: [1496985,1010566,947611], backgroundColor: "#1976d2" },
-    { label: "Unit Median Price (2024)",  data: [863257,718196,617395],   backgroundColor: "#ffb366" },
+    { label: "House Median Price", data: [1496985,1010566,947611], backgroundColor: "#1976d2" },
+    { label: "Unit Median Price",  data: [863257,718196,617395],   backgroundColor: "#ffb366" },
   ],
 };
 const priceOptions = {
