@@ -148,6 +148,8 @@ export default function Dashboard() {
           <CardContent className="space-y-2">
             <p className="text-gray-700">• 4th most liveable city (2025 EIU)</p>
             <p className="text-gray-700">• Top 6 global city (Oxford 2025)</p>
+            <p className="text-gray-700">• AAA</p>
+
           </CardContent>
         </Card>
 
@@ -176,22 +178,49 @@ export default function Dashboard() {
           </CardContent>
         </Card>
 
-        {/* 4. Rental Yield */}
+        {/* 4. Top Universities */}
         <Card className="bg-white">
-          <CardHeader>
-            <CardTitle>Rental Yield</CardTitle>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <span className="cursor-help text-gray-400">?</span>
-              </TooltipTrigger>
-              <TooltipContent>Average vs. Max yield (%)</TooltipContent>
-            </Tooltip>
-          </CardHeader>
-          <Separator />
-          <CardContent>
-            <Bar data={rentalYieldData} options={rentalYieldOptions} />
-          </CardContent>
-        </Card>
+  <CardHeader>
+    <CardTitle>Home to World class Universities (QS World rankings 2025)</CardTitle>
+  </CardHeader>
+  <Separator />
+  <CardContent className="flex flex-col gap-3">
+
+    {[
+      { rank: 19, logo: "/uniLogos/unimelb.png", name: "University of Melbourne" },
+      { rank: 36, logo: "/uniLogos/monash.png",       name: "Monash University"      },
+      { rank: 125, logo: "/uniLogos/rmit.png",        name: "RMIT"                   },
+    ].map(({ rank, logo, name }) => (
+      <div key={rank}
+           className="flex items-center p-2 rounded-md border shadow-sm space-x-3">
+
+        {/* 순위 + 로고 영역 */}
+        <div className="flex items-center w-20 gap-2">
+          {/* 숫자는 왼쪽 정렬, 폰트 크기 작게 */}
+          <div className="text-xl font-bold text-blue-600 min-w-[2.5rem] text-left">
+            {rank}
+          </div>
+          {/* 로고도 작게 */}
+          <img src={logo}
+               alt={`${name} Logo`}
+               className="w-6 h-6 object-contain" />
+        </div>
+
+        {/* 학교명: 폰트 크기 작게, 한 줄 유지 */}
+        <div className="flex-1 text-base font-medium whitespace-nowrap
+                        text-[clamp(0.75rem,1.2vw,0.875rem)]">
+          {name}
+        </div>
+      </div>
+    ))}
+
+  </CardContent>
+</Card>
+
+
+
+
+
 
         {/* 5. Population Donut */}
         <Card className="bg-white">
