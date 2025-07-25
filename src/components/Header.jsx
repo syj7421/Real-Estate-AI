@@ -1,4 +1,4 @@
-// src/components/Header.jsx
+// components/Header.jsx
 import React from "react";
 import {
   NavigationMenu,
@@ -8,27 +8,39 @@ import {
 } from "./ui/navigation-menu";
 
 const modes = [
+  { value: "hero", label: "Why Melbourne?" },
   { value: "whyMelbourne", label: "Why Melbourne?" },
-  { value: "amenities",     label: "Explore" },
-  { value: "growth",        label: "Growth" },
+  { value: "amenities",   label: "Explore" },
+  { value: "growth",      label: "Growth" },
 ];
 
 export default function Header({ selectedMode, onChangeMode }) {
   return (
-    <header className="bg-white shadow">
+    <header
+      className="
+        fixed top-0 left-0 w-full
+        z-50                             /* << z‑index 확 높임 */
+        bg-transparent
+        backdrop-filter backdrop-blur-xl backdrop-saturate-150
+        border border-[rgba(255,255,255,0.2)]
+        shadow-lg
+      "
+    >
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        <h1 className="text-xl font-bold">Real Estate AI</h1>
         <NavigationMenu>
           <NavigationMenuList className="flex gap-4">
             {modes.map((m) => (
               <NavigationMenuItem key={m.value}>
                 <NavigationMenuLink asChild>
                   <button
-                    className={`px-3 py-1 rounded-md text-sm font-medium transition ${
-                      selectedMode === m.value
-                        ? "bg-gray-200 text-gray-900"
-                        : "text-gray-600 hover:bg-gray-100"
-                    }`}
+                    className={`
+                      px-3 py-1 rounded-md text-sm font-medium transition
+                      ${
+                        selectedMode === m.value
+                          ? "bg-[rgba(56,96,178,0.3)] text-white"
+                          : "text-white hover:bg-[rgba(56,96,178,0.2)]"
+                      }
+                    `}
                     onClick={() => onChangeMode(m.value)}
                   >
                     {m.label}
