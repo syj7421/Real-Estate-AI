@@ -7,19 +7,19 @@ import MapView from "./Map/MapView";
 
 const slides = [
   {
-    bgImage: "/carltonGarden.jpg",
+    bgImage: "/shrine.jpg",
     title1: "4th most liveable city in the world",
-    subtitle1: "EIU 2025",
+    subtitle1: "- EIU 2025 -",
     title2: "Top 6 global city in the world",
-    subtitle2: "Oxford 2025",
+    subtitle2: "- Oxford 2025 -",
   },
 
   {
-    bgImage: "/flinders.jpg",
-    title1: "Iconic transport hub",
-    subtitle1: "Flinders St Station",
-    title2: "Gateway to the city",
-    subtitle2: "Since 1854",
+    bgImage: "/carltonGarden.jpg",
+    title1: "Educational Centre of Australia",
+    subtitle1: 'Branded as the "Education State," Victoria lives up to its name, in 2025, Melbourne University ranked 19th, Monash University ranked 36th, and RMIT University ranked 125th in the world.',
+    title2: "",
+    subtitle2: "- QS World University Rankings 2025 -",
   },
 ];
 

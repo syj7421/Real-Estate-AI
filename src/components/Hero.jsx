@@ -40,20 +40,40 @@ export default function Hero({
         style={{ backgroundColor: `rgba(0, 0, 0, ${overlayOpacity})` }}
       />
 
-      <div className="relative z-10 flex flex-col justify-center items-center text-white h-full px-6 space-y-4">
-        <motion.h1 variants={item} className="text-4xl font-bold">
-          {title1}
-        </motion.h1>
-        <motion.p variants={item} className="text-xl">
-          {subtitle1}
-        </motion.p>
-        <motion.h1 variants={item} className="text-4xl font-bold mt-6">
-          {title2}
-        </motion.h1>
-        <motion.p variants={item} className="text-xl">
-          {subtitle2}
-        </motion.p>
-      </div>
+<div className="relative z-10 flex flex-col justify-center items-center text-white h-full px-6 space-y-4 text-center">
+  <div className="max-w-2xl">
+    <motion.h1 variants={item} className="text-4xl font-bold">
+      {title1}
+    </motion.h1>
+    <motion.p variants={item} className="text-xl mt-2">
+      {subtitle1}
+    </motion.p>
+    <motion.h1 variants={item} className="text-4xl font-bold mt-6">
+      {title2}
+    </motion.h1>
+    <motion.p variants={item} className="text-xl mt-2">
+      {subtitle2}
+    </motion.p>
+  </div>
+</div>
+<div className="relative z-10 flex flex-col justify-center items-center text-white h-full px-6 space-y-4 text-center">
+  <div className="">
+    <motion.h1 variants={item} className="text-4xl font-bold">
+      {title1}
+    </motion.h1>
+    <motion.p variants={item} className=" text-gray-300 text-xl mt-2">
+      {subtitle1}
+    </motion.p>
+    <motion.h1 variants={item} className="text-4xl font-bold mt-6">
+      {title2}
+    </motion.h1>
+    <motion.p variants={item} className="text-gray-300 text-xl mt-2">
+      {subtitle2}
+    </motion.p>
+  </div>
+</div>
+
+
     </motion.div>
   );
 }
