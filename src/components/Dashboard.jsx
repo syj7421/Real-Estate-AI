@@ -300,6 +300,7 @@ Chart.register(
   PointElement
 );
 
+/// 1. Population growth bar chart data + options
 // 1. Population growth bar chart data + options
 const groupedBarData = {
   labels: ["2022", "2023", "2024"],
@@ -311,7 +312,20 @@ const groupedBarData = {
 };
 const groupedBarOptions = {
   responsive: true,
-  scales: { y: { beginAtZero: true, title: { display: true } } },
+  maintainAspectRatio: false,
+  scales: {
+    y: {
+      beginAtZero: true,
+      title: { display: true, text: "Number of People" },
+      ticks: {
+        callback: value => {
+          if (value >= 1e6) return (value / 1e6) + 'm';
+          if (value >= 1e3) return (value / 1e3) + 'k';
+          return value;
+        }
+      }
+    }
+  },
   plugins: {
     tooltip: {
       callbacks: {
@@ -337,7 +351,8 @@ const lineChartData = {
 };
 const lineChartOptions = {
   responsive: true,
-  scales: { y: { beginAtZero: true, title: { display: true } } },
+  maintainAspectRatio: false,
+  scales: { y: { beginAtZero: true, title: { display: true,  text: "Growth Rate (%) " } } },
   plugins: {
     legend: { position: "bottom" },
     tooltip: {
@@ -349,19 +364,54 @@ const lineChartOptions = {
   animation: { duration: 1200 },
 };
 
+// 3. Median house & unit price
+const priceData = {
+  labels: ["Sydney","Brisbane","Melbourne"],
+  datasets: [
+    { label: "House Median Price", data: [1496985,1010566,947611], backgroundColor: "#1976d2" },
+    { label: "Unit Median Price",  data: [863257,718196,617395],   backgroundColor: "#ffb366" },
+  ],
+};
+const priceOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  scales: {
+    y: {
+      beginAtZero: true,
+      title: { display: true, text: "Price (AUD)" },
+      ticks: {
+        callback: value => {
+          if (value >= 1e6) return (value / 1e6).toFixed(1) + 'm';
+          if (value >= 1e3) return (value / 1e3) + 'k';
+          return value;
+        }
+      }
+    }
+  },
+  plugins: {
+    legend: { position: "bottom" },
+    tooltip: {
+      callbacks: {
+        label: ctx => `${ctx.dataset.label}: $${ctx.parsed.y.toLocaleString()}`
+      }
+    }
+  },
+  animation: { duration: 1200 },
+};
+
 export default function Dashboard() {
   return (
-    <div className="w-4/5 mx-auto grid grid-cols-3 grid-rows-2 gap-6 p-6">
+    <div className="w-4/5 mx-auto grid grid-cols-3 grid-rows-2 gap-3 p-6 h-[90vh]">
       {/* Merged Card for Graphs 1 & 2 */}
       <Card className="flex flex-col col-span-2">
-        <CardHeader className="basis-[15%] flex items-center px-4">
+        <CardHeader className="basis-[15%] flex items-left px-4">
           <CardTitle className="flex-1 text-left">The fastest growing city in Australia</CardTitle>
         </CardHeader>
-        <CardContent className="basis-[70%] flex px-4 py-2">
-          <div className="flex-1 flex items-center justify-center">
+        <CardContent className="basis-[70%] flex px-4 py-2 h-[90%]">
+          <div className="flex-1 h-full flex items-center justify-center">
             <Bar data={groupedBarData} options={groupedBarOptions} />
           </div>
-          <div className="flex-1 flex items-center justify-center">
+          <div className="flex-1 h-full flex items-center justify-center">
             <Line data={lineChartData} options={lineChartOptions} />
           </div>
         </CardContent>
@@ -371,13 +421,26 @@ export default function Dashboard() {
         </div>
       </Card>
 
+      <Card className="flex flex-col">
+        <CardHeader className="basis-[15%] px-4">
+          <CardTitle>Median House Price July 2025</CardTitle>
+        </CardHeader>
+        <CardContent className="basis-[70%] flex items-center justify-center px-4 py-2 h-[90%]">
+          <Bar data={priceData} options={priceOptions} />
+        </CardContent>
+        <div className="basis-[15%] text-xs text-gray-500 flex items-center px-4">
+          <div className="flex-1" />
+          <div className="text-right">Yourmortgage.com Report</div>
+        </div>
+      </Card>
+
       {/* Remaining Cards 3 to 6 */}
-      {['Card 3', 'Card 4', 'Card 5', 'Card 6'].map((title) => (
+      {['Card 4', 'Card 5', 'Card 6'].map((title) => (
         <Card key={title} className="flex flex-col">
           <CardHeader className="basis-[15%] px-4">
             <CardTitle>{title}</CardTitle>
           </CardHeader>
-          <CardContent className="basis-[70%] flex items-center justify-center px-4 py-2">
+          <CardContent className="basis-[70%] flex items-center justify-center px-4 py-2 h-[90%]">
             {/* Content for {title} */}
           </CardContent>
           <div className="basis-[15%] text-xs text-gray-500 text-right px-4">Source: ...</div>
