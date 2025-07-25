@@ -1,5 +1,18 @@
 // components/Hero.jsx
 import React from "react";
+import { motion } from "framer-motion";
+
+// 전체 컨테이너: 자식 애니메이션을 stagger
+const container = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.3 } },
+};
+
+// 각 텍스트 아이템 애니메이션
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+};
 
 export default function Hero({
   bgImage,
@@ -11,26 +24,36 @@ export default function Hero({
   height,
 }) {
   return (
-    <div
+    <motion.div
       className={`${height} relative`}
       style={{
         backgroundImage: `url(${bgImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
+      variants={container}
+      initial="hidden"
+      animate="visible"
     >
-      {/* 이 오버레이가 클릭을 막으니 pointer-events: none 을 줍니다 */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ backgroundColor: `rgba(0, 0, 0, ${overlayOpacity})` }}
       />
 
-      <div className="relative z-10 flex flex-col justify-center items-center text-white h-full px-6">
-        <h1 className="text-4xl font-bold">{title1}</h1>
-        <p className="text-xl mt-2">{subtitle1}</p>
-        <h1 className="text-4xl font-bold mt-6">{title2}</h1>
-        <p className="text-xl mt-2">{subtitle2}</p>
+      <div className="relative z-10 flex flex-col justify-center items-center text-white h-full px-6 space-y-4">
+        <motion.h1 variants={item} className="text-4xl font-bold">
+          {title1}
+        </motion.h1>
+        <motion.p variants={item} className="text-xl">
+          {subtitle1}
+        </motion.p>
+        <motion.h1 variants={item} className="text-4xl font-bold mt-6">
+          {title2}
+        </motion.h1>
+        <motion.p variants={item} className="text-xl">
+          {subtitle2}
+        </motion.p>
       </div>
-    </div>
+    </motion.div>
   );
 }
