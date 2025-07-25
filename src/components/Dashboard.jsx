@@ -285,9 +285,11 @@ import {
   Tooltip as ChartTooltip,
   ArcElement,
   Legend,
+  Title,
   LineElement,
   PointElement,
 } from "chart.js";
+import { AnimatedNumber } from "./AnimatedNumber";
 
 Chart.register(
   BarElement,
@@ -296,6 +298,7 @@ Chart.register(
   ChartTooltip,
   ArcElement,
   Legend,
+  Title,
   LineElement,
   PointElement
 );
@@ -327,6 +330,10 @@ const groupedBarOptions = {
     }
   },
   plugins: {
+    title: {
+      display: true,
+      text: "Annual population increase"
+    },
     tooltip: {
       callbacks: {
         label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()} people`
@@ -346,14 +353,20 @@ const lineChartData = {
   datasets: [
     { label: "Brisbane", data: [2.3,3.1,2.7], borderColor: "#5ec6c6", backgroundColor: "#5ec6c6", tension: 0.3 },
     { label: "Sydney",   data: [0.7,2.8,2.0], borderColor: "#ffb366", backgroundColor: "#ffb366", tension: 0.3 },
-    { label: "Melbourne",data: [1.1,3.3,2.7], borderColor: "#1976d2", backgroundColor: "#1976d2", tension: 0.3 },
+    { label: "Melbourne",data: [1.1,3.3,2.74], borderColor: "#1976d2", backgroundColor: "#1976d2", tension: 0.3 },
   ],
 };
 const lineChartOptions = {
+  
   responsive: true,
   maintainAspectRatio: false,
   scales: { y: { beginAtZero: true, title: { display: true,  text: "Growth Rate (%) " } } },
   plugins: {
+    title: {
+      display: true,
+      text: "Annual population growth rate"
+    },
+    
     legend: { position: "bottom" },
     tooltip: {
       callbacks: {
@@ -389,6 +402,10 @@ const priceOptions = {
     }
   },
   plugins: {
+    title: {
+      display: true,
+      text: "Median Price by City"
+    },
     legend: { position: "bottom" },
     tooltip: {
       callbacks: {
@@ -403,49 +420,104 @@ export default function Dashboard() {
   return (
     <div className="w-4/5 mx-auto grid grid-cols-3 grid-rows-2 gap-3 p-6 h-[90vh]">
       {/* Merged Card for Graphs 1 & 2 */}
-      <Card className="flex flex-col col-span-2">
+      <Card className="flex flex-col justify-center">
         <CardHeader className="basis-[15%] flex items-left px-4">
-          <CardTitle className="flex-1 text-left">The fastest growing city in Australia</CardTitle>
+          <CardTitle className="flex-1 text-left"></CardTitle>
         </CardHeader>
-        <CardContent className="basis-[70%] flex px-4 py-2 h-[90%]">
-          <div className="flex-1 h-full flex items-center justify-center">
-            <Bar data={groupedBarData} options={groupedBarOptions} />
+        <CardContent className="basis-[70%] flex flex-col px-4 py-2 h-full space-y-4">
+        <div className="flex-1 flex flex-col items-center justify-center">
+            <h1 className="text-4xl text-center font-semibold">The fastest growing city in Australia</h1>
+            <div className="text-4xl text-gray-600"></div>
           </div>
-          <div className="flex-1 h-full flex items-center justify-center">
-            <Line data={lineChartData} options={lineChartOptions} />
-          </div>
+        
         </CardContent>
+        
         <div className="basis-[15%] text-xs text-gray-500 flex items-center px-4">
           <div className="flex-1" />
           <div className="text-right">Australian Bureau of Statistics</div>
         </div>
       </Card>
 
+
       <Card className="flex flex-col">
-        <CardHeader className="basis-[15%] px-4">
-          <CardTitle>Median House Price July 2025</CardTitle>
+      <CardHeader className="basis-[15%] flex items-left px-4">
+          <CardTitle className="flex-1 text-left"></CardTitle>
         </CardHeader>
-        <CardContent className="basis-[70%] flex items-center justify-center px-4 py-2 h-[90%]">
-          <Bar data={priceData} options={priceOptions} />
+        <CardContent className="basis-[70%] flex px-4 py-2 h-[90%]">
+          {/* Graphs */}
+            <Bar data={groupedBarData} options={groupedBarOptions} />
+          
+          
+        </CardContent>
+       
+      </Card>
+
+      <Card className="flex flex-col">
+        <CardHeader className="basis-[15%] flex items-left px-4">
+        </CardHeader>
+        <CardContent className="basis-[70%] flex px-4 py-2 h-[90%]">
+          {/* Graphs */}
+          
+            <Line data={lineChartData} options={lineChartOptions} />
+       
+        </CardContent>
+      
+      </Card>
+
+      
+      <Card className="flex flex-col">
+        <CardHeader className="basis-[15%] flex items-left px-4">
+          <CardTitle className="flex-1 text-left">Median House Price July 2025</CardTitle>
+        </CardHeader>
+        <CardContent className="basis-[70%] flex flex-col px-4 py-2 h-full space-y-4">
+        <div className="flex-1 flex flex-col items-center justify-center">
+            <h1 className="text-5xl font-semibold">$950k</h1>
+            <h2 className="text-4xl text-gray-600">3rd in Australia</h2>
+          </div>
+        
         </CardContent>
         <div className="basis-[15%] text-xs text-gray-500 flex items-center px-4">
           <div className="flex-1" />
           <div className="text-right">Yourmortgage.com Report</div>
         </div>
       </Card>
+      
 
-      {/* Remaining Cards 3 to 6 */}
-      {['Card 4', 'Card 5', 'Card 6'].map((title) => (
-        <Card key={title} className="flex flex-col">
-          <CardHeader className="basis-[15%] px-4">
-            <CardTitle>{title}</CardTitle>
-          </CardHeader>
-          <CardContent className="basis-[70%] flex items-center justify-center px-4 py-2 h-[90%]">
-            {/* Content for {title} */}
-          </CardContent>
-          <div className="basis-[15%] text-xs text-gray-500 text-right px-4">Source: ...</div>
-        </Card>
-      ))}
+      
+
+      {/* Merged Card for Median Price spanning two rows */}
+      <Card className="flex flex-col ">
+      <CardHeader className="basis-[15%] flex items-left px-4">
+          <CardTitle className="flex-1 text-left"></CardTitle>
+        </CardHeader>
+        <CardContent className="basis-[70%] flex flex-col px-4 py-2 h-full space-y-4">
+       
+            <Bar data={priceData} options={priceOptions} />
+          
+        </CardContent>
+        
+      </Card>
+
+
+      <Card className="flex flex-col">
+  <CardHeader className="basis-[15%] flex items-center px-4">
+    <CardTitle className="flex-1 text-center">Melbourne City’s Vacancy Rate in June 2025</CardTitle>
+  </CardHeader>
+  <CardContent className="basis-[70%] flex flex-col px-4 py-2 h-full space-y-4">
+    <div className="flex-1 flex items-center justify-center text-5xl font-bold">
+      <div className="flex items-baseline space-x-1">
+        <AnimatedNumber value={2.5} decimals={2} />
+        <span>%</span>
+      </div>
+    </div>
+  </CardContent>
+  <div className="basis-[15%] text-xs text-gray-500 flex items-center px-4">
+    <div className="flex-1" />
+    <div className="text-right">Real Estate Institute of Victoria</div>
+  </div>
+</Card>
+
     </div>
   );
 }
+
