@@ -116,26 +116,44 @@ export default function Dashboard() {
     <TooltipProvider> {/* make sure App.jsx wraps in <TooltipProvider> */}
       <DashboardLayout>
         {/* 1. Facts */}
-        <Card className="relative overflow-hidden cursor-pointer group  shadow-md">
-          <img
+        
+        <Card className="relative bg-white overflow-hidden h-[22rem]">
+        
+  {/* 原图 */}
+  <img
     src="/flinders.jpg"
-    alt="Melbourne F1"
-    className="absolute inset-0 w-full -z-1 h-full object-cover opacity-80 blur-[1px] group-hover:opacity-50 transition"
+    alt=""
+    className="absolute inset-0 w-full h-full object-cover"
   />
+  {/* 蒙版 */}
+  <div className="absolute inset-0 bg-black/40"></div>
 
 
-            <div className="relative z-10 p-5 text-white">
-    <h3 className="text-lg font-semibold drop-shadow-md">
-    Why Melbourne?
-    </h3>
-    <p className="text-white">• 4th most liveable city in the world(2025 EIU)</p>
-            <p className="text-white">• Top 6 global city in the world(Oxford 2025)</p>
-            <p className="text-white">• One of only 11 countries with a perfect AAA credit rating</p>
-    
+  <CardContent className="relative flex flex-col items-center justify-center gap-6 h-full">
+    {[
+      { title: "4th most liveable city in the world", cite: "EIU 2025" },
+      { title: "Top 6 global city in the world",    cite: "Oxford 2025" },
+      { title: "Perfect AAA credit rating",         cite: "Trading Economics" },
+    ].map(({ title, cite }, idx) => (
+      <div key={idx} className="relative">
+        {/* blurred border */}
+        <div className="absolute inset-0 rounded-md border border-gray-200 filter blur-md"></div>
+        {/* actual card with reduced padding/margin */}
+        <div className="absolute inset-0 rounded-xl bg-black/10"></div>
+        <div className="relative flex flex-col items-center bg-white/90 backdrop-blur-sm px-2 py-1 rounded-xl w-80 space-y-0">
+        <div className="font-extrabold text-gray-800 text-center text-sm">
+            {title}
+          </div>
+          <div className="text-xs text-gray-400 text-center">
+            {cite}
+          </div>
+        </div>
+      </div>
+    ))}
+  </CardContent>
+</Card>
 
-  </div>
-          
-        </Card>
+
 
         {/* 2. Population Growth */}
         <Card className="bg-white">
@@ -165,52 +183,54 @@ export default function Dashboard() {
 </Card>
 
  {/* 4. Top Universities */}
- <Card className="bg-white">
-          
-          <CardHeader>
-            <CardTitle>Home to World class Universities (QS World Rankings 2025)</CardTitle>
-          </CardHeader>
-          <Separator />
-          <CardContent className="flex flex-col gap-3">
-        
-            {[
-              { rank: 19, logo: "/uniLogos/unimelb.png", name: "University of Melbourne" },
-              { rank: 36, logo: "/uniLogos/monash.png",       name: "Monash University"      },
-              { rank: 125, logo: "/uniLogos/rmit.png",        name: "RMIT"                   },
-            ].map(({ rank, logo, name }) => (
-              <div key={rank}
-                   className="flex items-center p-2 rounded-md border shadow-sm space-x-3">
-        
-                {/* 순위 + 로고 영역 */}
-                <div className="flex items-center w-20 gap-2">
-                  {/* 숫자는 왼쪽 정렬, 폰트 크기 작게 */}
-                  <div className="text-xl font-bold text-blue-600 min-w-[2.5rem] text-left">
-                    {rank}
-                  </div>
-                  {/* 로고도 작게 */}
-                  <img src={logo}
-                       alt={`${name} Logo`}
-                       className="w-6 h-6 object-contain" />
-                </div>
-        
-                {/* 학교명: 폰트 크기 작게, 한 줄 유지 */}
-                <div className="flex-1 text-base font-medium whitespace-nowrap
-                                text-[clamp(0.75rem,1.2vw,0.875rem)]">
-                  {name}
-                </div>
-              </div>
-            ))}
-        
-          </CardContent>
-        </Card>
+ <Card className="relative bg-white overflow-hidden h-[22rem]">
+  {/* background image */}
+  <img
+    src="/skyscrapers.jpg"
+    alt=""
+    className="absolute inset-0 w-full h-full object-cover opacity-80 z-0"
+  />
+
+  {/* 이 wrapper에 z-10을 걸어 모든 콘텐츠를 이미지 위로 올려줌 */}
+  <div className="relative z-10 flex flex-col h-full">
+    <CardHeader>
+      <CardTitle className="text-black">
+        Home to World class Universities (QS World Rankings 2025)
+      </CardTitle>
+    </CardHeader>
+
+    <CardContent className="flex flex-col items-center justify-center gap-6 h-full">
+      {[
+        { rank: 19, logo: "/uniLogos/unimelb.png", name: "University of Melbourne" },
+        { rank: 36, logo: "/uniLogos/monash.png",       name: "Monash University"      },
+        { rank: 125, logo: "/uniLogos/rmit.png",        name: "RMIT"                   },
+      ].map(({ rank, logo, name }) => (
+        <div
+ key={rank}
+ className="flex items-center p-2 rounded-md border shadow-sm space-x-3 bg-white w-80">
+          <div className="flex items-center w-20 gap-2">
+            <div className="text-xl font-bold text-blue-600 min-w-[2.5rem] text-left">
+              {rank}
+            </div>
+            <img
+              src={logo}
+              alt={`${name} Logo`}
+              className="w-6 h-6 object-contain"
+            />
+          </div>
+          <div className="flex-1 text-base font-medium whitespace-nowrap text-[clamp(0.75rem,1.2vw,0.875rem)]">
+            {name}
+          </div>
+        </div>
+      ))}
+    </CardContent>
+  </div>
+</Card>
+
 
         {/* 5. */}
         <Card className="relative overflow-hidden cursor-pointer group  shadow-md">
-          <img
-    src="/skyscrapers.jpg"
-    alt="Melbourne F1"
-    className="absolute inset-0 -z-1 w-full h-full object-cover opacity-80 blur-[1px] group-hover:opacity-50 transition"
-  />
+         
   <div className="relative z-10 p-5 text-white">
     <h3 className="text-lg font-semibold drop-shadow-md">
     Residential Permits in CBD Since 2016
