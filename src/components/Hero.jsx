@@ -1,4 +1,3 @@
-// components/Hero.jsx
 import React from "react";
 import { motion } from "framer-motion";
 
@@ -41,7 +40,7 @@ export default function Hero({
         style={{ backgroundColor: `rgba(0, 0, 0, ${overlayOpacity})` }}
       />
 
-      {/* Text + Conditional Logo Container */}
+      {/* Text and logos */}
       <div className="relative z-10 flex flex-col justify-center items-center text-white h-full px-6 space-y-4 text-center">
         <div className="max-w-2xl">
           <motion.h1 variants={item} className="text-4xl font-bold">
@@ -52,46 +51,59 @@ export default function Hero({
             {subtitle1}
           </motion.p>
 
-          {/* 🔽 Logo section only for second slide */}
+          {/* Logos with ranking – only for the education slide */}
           {title1 === "Educational Centre of Australia" && (
-  <motion.div
-    variants={item}
-    className="mt-8 flex justify-center items-start gap-10"
-  >
-    {/* UniMelb – no white background */}
-    <div className="flex flex-col items-center">
-      <div className="bg-white p-2 rounded">
-        <img src="/uniLogos/unimelb.png" alt="Unimelb" className="h-20" />
-      </div>
-      <p className="text-lg font-semibold text-white mt-3 leading-tight">
-        #19 in the World
-      </p>
-      <p className="text-lg font-semibold text-gray-300">#1 in Australia</p>
-    </div>
+            <motion.div
+              variants={item}
+              className="mt-8 flex flex-wrap justify-center items-start gap-10 gap-y-6"
+            >
+              {/* UniMelb */}
+              <div className="flex flex-col items-center">
+                <div className="bg-transparent p-2 rounded transition-transform hover:scale-105">
+                  <img
+                    src="/uniLogos/unimelb.png"
+                    alt="Unimelb"
+                    className="h-20"
+                  />
+                </div>
+                <p className="text-xl font-bold text-white mt-3 leading-tight">
+                  <span className="text-yellow-400 text-2xl">#19</span> in the World
+                </p>
+                <p className="text-xl font-bold text-white leading-tight">
+                  <span className="text-yellow-400 text-2xl">#1</span> in Australia
+                </p>
+             
+              </div>
 
-    {/* Monash – white background */}
-    <div className="flex flex-col items-center">
-      <div className="bg-white p-2 rounded">
-        <img src="/uniLogos/monash.png" alt="Monash" className="h-20" />
-      </div>
-      <p className="text-lg font-semibold text-white mt-3 leading-tight">
-        #37 in the World
-      </p>
-    </div>
+              {/* Monash */}
+              <div className="flex flex-col items-center">
+                <div className="bg-white p-2 rounded transition-transform hover:scale-105">
+                  <img
+                    src="/uniLogos/monash.png"
+                    alt="Monash"
+                    className="h-20"
+                  />
+                </div>
+                <p className="text-xl font-bold text-white mt-3 leading-tight">
+                  <span className="text-yellow-400 text-2xl">#37</span> in the World
+                </p>
+              </div>
 
-    {/* RMIT – white background */}
-    <div className="flex flex-col items-center">
-      <div className="bg-white p-2 rounded">
-        <img src="/uniLogos/rmit.png" alt="RMIT" className="h-20" />
-      </div>
-      <p className="text-lg font-semibold text-white mt-3 leading-tight">
-        #125 in the World
-      </p>
-    </div>
-  </motion.div>
-)}
-
-
+              {/* RMIT */}
+              <div className="flex flex-col items-center">
+                <div className="bg-white p-2 rounded transition-transform hover:scale-105">
+                  <img
+                    src="/uniLogos/rmit.png"
+                    alt="RMIT"
+                    className="h-20"
+                  />
+                </div>
+                <p className="text-xl font-bold text-white mt-3 leading-tight">
+                  <span className="text-yellow-400 text-2xl">#125</span> in the World
+                </p>
+              </div>
+            </motion.div>
+          )}
 
           <motion.h1 variants={item} className="text-4xl font-bold mt-6">
             {title2}
