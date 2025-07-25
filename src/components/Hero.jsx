@@ -35,45 +35,72 @@ export default function Hero({
       initial="hidden"
       animate="visible"
     >
+      {/* Dark overlay */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ backgroundColor: `rgba(0, 0, 0, ${overlayOpacity})` }}
       />
 
-<div className="relative z-10 flex flex-col justify-center items-center text-white h-full px-6 space-y-4 text-center">
-  <div className="max-w-2xl">
-    <motion.h1 variants={item} className="text-4xl font-bold">
-      {title1}
-    </motion.h1>
-    <motion.p variants={item} className="text-xl mt-2">
-      {subtitle1}
-    </motion.p>
-    <motion.h1 variants={item} className="text-4xl font-bold mt-6">
-      {title2}
-    </motion.h1>
-    <motion.p variants={item} className="text-xl mt-2">
-      {subtitle2}
-    </motion.p>
-  </div>
-</div>
-<div className="relative z-10 flex flex-col justify-center items-center text-white h-full px-6 space-y-4 text-center">
-  <div className="">
-    <motion.h1 variants={item} className="text-4xl font-bold">
-      {title1}
-    </motion.h1>
-    <motion.p variants={item} className=" text-gray-300 text-xl mt-2">
-      {subtitle1}
-    </motion.p>
-    <motion.h1 variants={item} className="text-4xl font-bold mt-6">
-      {title2}
-    </motion.h1>
-    <motion.p variants={item} className="text-gray-300 text-xl mt-2">
-      {subtitle2}
-    </motion.p>
-  </div>
-</div>
+      {/* Text + Conditional Logo Container */}
+      <div className="relative z-10 flex flex-col justify-center items-center text-white h-full px-6 space-y-4 text-center">
+        <div className="max-w-2xl">
+          <motion.h1 variants={item} className="text-4xl font-bold">
+            {title1}
+          </motion.h1>
+
+          <motion.p variants={item} className="text-gray-300 text-xl mt-2">
+            {subtitle1}
+          </motion.p>
+
+          {/* 🔽 Logo section only for second slide */}
+          {title1 === "Educational Centre of Australia" && (
+  <motion.div
+    variants={item}
+    className="mt-8 flex justify-center items-start gap-10"
+  >
+    {/* UniMelb – no white background */}
+    <div className="flex flex-col items-center">
+      <div className="bg-white p-2 rounded">
+        <img src="/uniLogos/unimelb.png" alt="Unimelb" className="h-20" />
+      </div>
+      <p className="text-lg font-semibold text-white mt-3 leading-tight">
+        #19 in the World
+      </p>
+      <p className="text-lg font-semibold text-gray-300">#1 in Australia</p>
+    </div>
+
+    {/* Monash – white background */}
+    <div className="flex flex-col items-center">
+      <div className="bg-white p-2 rounded">
+        <img src="/uniLogos/monash.png" alt="Monash" className="h-20" />
+      </div>
+      <p className="text-lg font-semibold text-white mt-3 leading-tight">
+        #37 in the World
+      </p>
+    </div>
+
+    {/* RMIT – white background */}
+    <div className="flex flex-col items-center">
+      <div className="bg-white p-2 rounded">
+        <img src="/uniLogos/rmit.png" alt="RMIT" className="h-20" />
+      </div>
+      <p className="text-lg font-semibold text-white mt-3 leading-tight">
+        #125 in the World
+      </p>
+    </div>
+  </motion.div>
+)}
 
 
+
+          <motion.h1 variants={item} className="text-4xl font-bold mt-6">
+            {title2}
+          </motion.h1>
+          <motion.p variants={item} className="text-gray-300 text-xl mt-2">
+            {subtitle2}
+          </motion.p>
+        </div>
+      </div>
     </motion.div>
   );
 }
