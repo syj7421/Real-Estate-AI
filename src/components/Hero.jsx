@@ -59,7 +59,7 @@ export default function Hero({
             >
               {/* UniMelb */}
               <div className="flex flex-col items-center">
-                <div className="bg-transparent p-2 rounded transition-transform hover:scale-105">
+                <div className="bg-white bg-transparent p-2 rounded transition-transform hover:scale-105">
                   <img
                     src="/uniLogos/unimelb.png"
                     alt="Unimelb"

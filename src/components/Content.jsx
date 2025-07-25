@@ -21,6 +21,14 @@ const slides = [
     title2: "",
     subtitle2: "- QS World University Rankings 2025 -",
   },
+
+  {
+    bgImage: "/formula.jpg",
+    title1: "Paris of the Southern Hemisphere",
+    subtitle1: 'Melbourne, known as the Paris of the Southern Hemisphere, is a vibrant hub of multiculturalism and global prestige, hosting iconic international events like the Formula 1 Grand Prix and Australian Open, making it a true centre of world culture and diversity.',
+    title2: "",
+    subtitle2: "",
+  },
 ];
 
 export default function Content({ selectedMode }) {
