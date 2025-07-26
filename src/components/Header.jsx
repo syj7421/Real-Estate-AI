@@ -8,7 +8,7 @@ import {
 } from "./ui/navigation-menu";
 
 const modes = [
-  { value: "hero", label: "Why Melbourne?" },
+  { value: "hero", label: "Introduce" },
   { value: "whyMelbourne", label: "Why Melbourne?" },
   { value: "amenities",   label: "Explore" },
   { value: "growth",      label: "Growth" },
