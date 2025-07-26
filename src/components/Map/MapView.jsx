@@ -1,98 +1,59 @@
-// src/components/MapView.jsx
+// src/components/Map/MapView.jsx
 import React, { useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
 import { facilities } from "../../data/facilities";
 import { getDistanceMeters } from "../../utils/distance";
 import L from "leaflet";
-import "leaflet/dist/leaflet.css";     
+import "leaflet/dist/leaflet.css";
 import CustomerFacilMarker from "./CustomerFacilMarker";
 import ReactDOMServer from "react-dom/server";
 import { properties } from "../../data/properties";
 import { freeTramZone } from "../../data/freeTramZone";
 import melbourneCitySuburb from "../../data/melbourne city analysis/melbourneCitySuburbs.json";
 
-// 1️⃣ Leaflet 기본 아이콘을 로컬 번들로 지정
+// Leaflet 기본 아이콘 설정
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
-
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: markerIcon2x,
   iconUrl: markerIcon,
   shadowUrl: markerShadow,
 });
 
-// Red icon for property markers
+// 붉은 점 아이콘
 const redIcon = new L.Icon({
   iconUrl: "https://maps.gstatic.com/mapfiles/ms2/micons/red-dot.png",
   iconSize: [32, 32],
   iconAnchor: [16, 32],
 });
 
-const categories = [
-  "education",
-  "medical",
-  "park",
-  "shopping",
-  "culture & entertainment",
-  "station"
-];
-
-export default function MapView() {
-  // State for selected property and category
+export default function MapView({ selectedCategory, showTramZone }) {
   const [selectedProperty, setSelectedProperty] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState("education");
-  const [showTramZone, setShowTramZone] = useState(false);
 
-  // Facilities within 800m of selected property and matching category
   const filteredFacilities = selectedProperty
     ? facilities.filter(
         (fac) =>
-          getDistanceMeters(selectedProperty.lat, selectedProperty.lng, fac.lat, fac.lng) <= 800 &&
-          fac.category.toLowerCase() === selectedCategory.toLowerCase() 
+          getDistanceMeters(
+            selectedProperty.lat,
+            selectedProperty.lng,
+            fac.lat,
+            fac.lng
+          ) <= 800 &&
+          fac.category.toLowerCase() === selectedCategory.toLowerCase()
       )
     : [];
 
   return (
-    <div>
-      {/* Header with radio buttons */}
-      <div style={{ padding: "1rem", background: "#f8f8f8", display: "flex", gap: "1.5rem", alignItems: "center" }}>
-        {categories.map((cat, idx) => (
-          <span key={cat} style={{ display: "flex", alignItems: "center", gap: "0.5em" }}>
-            <label style={{ textTransform: "capitalize", cursor: "pointer" }}>
-              <input
-                type="radio"
-                name="facility-category"
-                value={cat}
-                checked={selectedCategory === cat}
-                onChange={() => setSelectedCategory(cat)}
-                style={{ marginRight: "0.5em" }}
-              />
-              {cat}
-            </label>
-            {/* Insert the tram zone checkbox right after the 'station' radio button */}
-            {cat === "station" && (
-              <label style={{ marginLeft: 8, cursor: "pointer", fontWeight: 500 }}>
-                <input
-                  type="checkbox"
-                  checked={showTramZone}
-                  onChange={e => setShowTramZone(e.target.checked)}
-                  style={{ marginRight: 4 }}
-                />
-                Show Free Tram Zone
-              </label>
-            )}
-          </span>
-        ))}
-      </div>
+    <div className="pt-16">
       <MapContainer
         center={[properties[0].lat, properties[0].lng]}
         zoom={15}
-        style={{ height: "90vh", width: "100%" }}
+        className="w-[70vw] mx-auto"
+        style={{ height: "90vh" }}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
-        {/* Property markers */}
         {properties.map((property) => (
           <Marker
             key={property.name}
@@ -102,11 +63,14 @@ export default function MapView() {
               click: () => setSelectedProperty(property),
             }}
           >
-            <Popup>{property.name}<br/>Click to show nearby facilities</Popup>
+            <Popup>
+              {property.name}
+              <br />
+              Click to show nearby facilities
+            </Popup>
           </Marker>
         ))}
 
-        {/* Facility markers (only after property is selected) */}
         {selectedProperty &&
           filteredFacilities.map((fac, idx) => (
             <Marker
@@ -114,8 +78,10 @@ export default function MapView() {
               position={[fac.lat, fac.lng]}
               icon={
                 new L.DivIcon({
-                  html: ReactDOMServer.renderToString(<CustomerFacilMarker number={idx + 1} />),
-                  className: "", // Prevents default styles
+                  html: ReactDOMServer.renderToString(
+                    <CustomerFacilMarker number={idx + 1} />
+                  ),
+                  className: "",
                   iconSize: [32, 32],
                   iconAnchor: [16, 32],
                 })
@@ -128,20 +94,26 @@ export default function MapView() {
               </Popup>
             </Marker>
           ))}
+
         <GeoJSON
-  data={melbourneCitySuburb}
-  style={{
-    color: "#333333",         // 테두리: 진한 회색
-    fillColor: "#999999",     // 채움: 중간 회색
-    fillOpacity: 0.25,
-    weight: 4
-  }}
-/>
-        {/* Free Tram Zone Polygon */}
+          data={melbourneCitySuburb}
+          style={{
+            color: "#333333",
+            fillColor: "#999999",
+            fillOpacity: 0.25,
+            weight: 4,
+          }}
+        />
+
         {showTramZone && (
           <GeoJSON
             data={freeTramZone}
-            style={{ color: "#5C8B2F", fillColor: "#92C359", fillOpacity: 0.6, weight: 4 }}
+            style={{
+              color: "#5C8B2F",
+              fillColor: "#92C359",
+              fillOpacity: 0.6,
+              weight: 4,
+            }}
           />
         )}
       </MapContainer>

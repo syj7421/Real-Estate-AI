@@ -1,4 +1,4 @@
-// components/Content.jsx
+// src/components/Content.jsx
 import React, { useRef, useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Hero from "./Hero";
@@ -13,25 +13,29 @@ const slides = [
     title2: "Top 6 global city in the world",
     subtitle2: "- Oxford 2025 -",
   },
-
   {
     bgImage: "/carltonGarden.jpg",
     title1: "Educational Centre of Australia",
-    subtitle1: 'Branded as the "Education State," Victoria lives up to its name, in 2025, Melbourne University ranked 19th, Monash University ranked 36th, and RMIT University ranked 125th in the world.',
+    subtitle1:
+      'Branded as the "Education State," Victoria lives up to its name, in 2025, Melbourne University ranked 19th, Monash University ranked 36th, and RMIT University ranked 125th in the world.',
     title2: "",
     subtitle2: "- QS World University Rankings 2025 -",
   },
-
   {
     bgImage: "/arts.png",
     title1: "Paris of the Southern Hemisphere",
-    subtitle1: 'Melbourne, known as the Paris of the Southern Hemisphere, is a vibrant hub of multiculturalism and global prestige, hosting iconic international events like the Formula 1 Grand Prix and Australian Open, making it a true centre of world culture and diversity.',
+    subtitle1:
+      'Melbourne, known as the Paris of the Southern Hemisphere, is a vibrant hub of multiculturalism and global prestige, hosting iconic international events like the Formula 1 Grand Prix and Australian Open, making it a true centre of world culture and diversity.',
     title2: "",
     subtitle2: "",
   },
 ];
 
-export default function Content({ selectedMode }) {
+export default function Content({
+  selectedMode,
+  selectedCategory,
+  showTramZone,
+}) {
   const scrollRef = useRef(null);
   const [currentIdx, setCurrentIdx] = useState(0);
 
@@ -55,8 +59,12 @@ export default function Content({ selectedMode }) {
     return (
       <main className="pt-16 bg-gray-50 flex-1 overflow-auto">
         {selectedMode === "whyMelbourne" && <Dashboard />}
-        {selectedMode === "amenities" && <MapView />}
-        {selectedMode === "growth" && <div>Growth Content</div>}
+        {selectedMode === "amenities" && (
+          <MapView
+            selectedCategory={selectedCategory}
+            showTramZone={showTramZone}
+          />
+        )}
       </main>
     );
   }
@@ -73,7 +81,7 @@ export default function Content({ selectedMode }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.5 }}    // ← 천천히, 1.5초
+            transition={{ duration: 1.5 }}
             className="absolute inset-0"
           >
             <Hero
@@ -84,16 +92,10 @@ export default function Content({ selectedMode }) {
           </motion.div>
         </AnimatePresence>
       </div>
-
-      {/* 빈 블록으로 스크롤 공간 확보 */}
       {slides.map((_, i) => (
         <div key={i} className="h-screen" />
       ))}
-
-      {/* Hero 이후 실제 컨텐츠 */}
-      <section className="h-screen bg-gray-50">
-        {/* … */}
-      </section>
+      <section className="h-screen bg-gray-50">{/* … */}</section>
     </div>
   );
 }
