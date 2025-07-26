@@ -141,8 +141,8 @@ const priceOptions = {
 
 export default function Dashboard() {
   return (
-    <div className="w-[70vw] mx-auto grid grid-cols-3 grid-rows-2 gap-3 p-6 h-[90vh]">
-      {/* Merged Card for Graphs 1 & 2 */}
+ <div className="w-full max-w-screen-lg mx-auto grid grid-cols-3 grid-rows-2 gap-3 p-6 h-[90vh]">
+    {/* Merged Card for Graphs 1 & 2 */}
       <Card className="flex flex-col justify-center">
         <CardHeader className="basis-[15%] flex items-left px-4">
           <CardTitle className="flex-1 text-left"></CardTitle>

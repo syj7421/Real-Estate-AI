@@ -8,12 +8,12 @@ export default function App() {
   const [mode, setMode] = useState("hero");
 
   // Explore 탭용 상태
-  const [selectedCategory, setSelectedCategory] = useState("education");
+  const [selectedCategory, setSelectedCategory] = useState("major");
   const [showTramZone, setShowTramZone] = useState(false);
 
   return (
     <TooltipProvider>
-      <div className="relative flex flex-col h-screen">
+ <div className="relative flex flex-col h-screen overflow-x-hidden">
         <Header
           selectedMode={mode}
           onChangeMode={setMode}

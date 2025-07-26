@@ -1,15 +1,11 @@
 // src/components/Map/MapView.jsx
-import React, { useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
+import React from "react";
+import { MapContainer, TileLayer, Marker, GeoJSON, Tooltip } from "react-leaflet";
 import { facilities } from "../../data/facilities";
-import { getDistanceMeters } from "../../utils/distance";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import CustomerFacilMarker from "./CustomerFacilMarker";
-import ReactDOMServer from "react-dom/server";
-import { properties } from "../../data/properties";
-import { freeTramZone } from "../../data/freeTramZone";
 import melbourneCitySuburb from "../../data/melbourne city analysis/melbourneCitySuburbs.json";
+import { freeTramZone } from "../../data/freeTramZone";
 
 // Leaflet 기본 아이콘 설정
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
@@ -21,80 +17,39 @@ L.Icon.Default.mergeOptions({
   shadowUrl: markerShadow,
 });
 
-// 붉은 점 아이콘
-const redIcon = new L.Icon({
-  iconUrl: "https://maps.gstatic.com/mapfiles/ms2/micons/red-dot.png",
-  iconSize: [32, 32],
-  iconAnchor: [16, 32],
-});
-
-export default function MapView({ selectedCategory, showTramZone }) {
-  const [selectedProperty, setSelectedProperty] = useState(null);
-
-  const filteredFacilities = selectedProperty
-    ? facilities.filter(
-        (fac) =>
-          getDistanceMeters(
-            selectedProperty.lat,
-            selectedProperty.lng,
-            fac.lat,
-            fac.lng
-          ) <= 800 &&
-          fac.category.toLowerCase() === selectedCategory.toLowerCase()
-      )
-    : [];
+/**
+ * MapView 컴포넌트는 부모로부터 선택된 카테고리와 트램 존 표시 여부를 props로 받아
+ * facilities 데이터에서 해당 카테고리 항목만 지도에 렌더링합니다.
+ *
+ * props:
+ * - selectedCategory: string (e.g., "major", "education")
+ * - showTramZone: boolean
+ */
+export default function MapView({ selectedCategory = "major", showTramZone = false }) {
+  // facilities에서 selectedCategory와 일치하는 항목만 필터링
+  const filteredFacilities = facilities.filter(
+    (fac) => fac.category.toLowerCase() === selectedCategory.toLowerCase()
+  );
 
   return (
-    <div className="pt-16">
+    <div className="pt-16 flex justify-center">
       <MapContainer
-        center={[properties[0].lat, properties[0].lng]}
-        zoom={15}
-        className="w-[70vw] mx-auto"
-        style={{ height: "90vh" }}
+        center={[-37.8136, 144.9631]}
+        zoom={13}
+        className="w-[70vw] h-[90vh] mx-auto"
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
-        {properties.map((property) => (
-          <Marker
-            key={property.name}
-            position={[property.lat, property.lng]}
-            icon={redIcon}
-            eventHandlers={{
-              click: () => setSelectedProperty(property),
-            }}
-          >
-            <Popup>
-              {property.name}
-              <br />
-              Click to show nearby facilities
-            </Popup>
+        {/* 필터된 시설 마커 및 툴팁 */}
+        {filteredFacilities.map((fac, idx) => (
+          <Marker key={`${fac.name}-${idx}`} position={[fac.lat, fac.lng]}> 
+            <Tooltip direction="top" offset={[0, -10]} permanent>
+              {fac.name}
+            </Tooltip>
           </Marker>
         ))}
 
-        {selectedProperty &&
-          filteredFacilities.map((fac, idx) => (
-            <Marker
-              key={fac.name}
-              position={[fac.lat, fac.lng]}
-              icon={
-                new L.DivIcon({
-                  html: ReactDOMServer.renderToString(
-                    <CustomerFacilMarker number={idx + 1} />
-                  ),
-                  className: "",
-                  iconSize: [32, 32],
-                  iconAnchor: [16, 32],
-                })
-              }
-            >
-              <Popup>
-                <strong>{fac.name}</strong>
-                <br />
-                Category: {fac.category}
-              </Popup>
-            </Marker>
-          ))}
-
+        {/* 멜버른 시 경계 */}
         <GeoJSON
           data={melbourneCitySuburb}
           style={{
@@ -105,6 +60,7 @@ export default function MapView({ selectedCategory, showTramZone }) {
           }}
         />
 
+        {/* 트램 존 표시 (옵션) */}
         {showTramZone && (
           <GeoJSON
             data={freeTramZone}

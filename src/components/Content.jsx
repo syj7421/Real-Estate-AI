@@ -57,7 +57,7 @@ export default function Content({
 
   if (selectedMode !== "hero") {
     return (
-      <main className="pt-16 bg-gray-50 flex-1 overflow-auto">
+      <main className="pt-16 bg-gray-50 flex-1 overflow-auto overflow-x-hidden">
         {selectedMode === "whyMelbourne" && <Dashboard />}
         {selectedMode === "amenities" && (
           <MapView
@@ -70,10 +70,10 @@ export default function Content({
   }
 
   return (
-    <div
-      ref={scrollRef}
-      className="h-screen overflow-y-scroll scroll-smooth"
-    >
+   <div
+     ref={scrollRef}
+    className="w-screen h-screen overflow-y-scroll overflow-x-hidden scroll-smooth"
+  >
       <div className="sticky top-0 h-screen relative">
         <AnimatePresence exitBeforeEnter>
           <motion.div
@@ -82,7 +82,7 @@ export default function Content({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.5 }}
-            className="absolute inset-0"
+            className="absolute inset-0 w-screen h-screen box-border"
           >
             <Hero
               {...slides[currentIdx]}
@@ -92,10 +92,12 @@ export default function Content({
           </motion.div>
         </AnimatePresence>
       </div>
-      {slides.map((_, i) => (
-        <div key={i} className="h-screen" />
-      ))}
-      <section className="h-screen bg-gray-50">{/* … */}</section>
+
+         {/* these give you the scroll depth you need */}
+     {slides.map((_, i) => (
+      <div key={i} className="h-screen" />
+   ))}
+
     </div>
   );
 }

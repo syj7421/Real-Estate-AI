@@ -14,6 +14,7 @@ const modes = [
 ];
 
 const categories = [
+  "major",
   "education",
   "medical",
   "park",
